@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.ProgressIndicator?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.FinancialLedgerController">
+   <children>
+      <SplitPane dividerPositions="0.25" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label styleClass="subtitle" text="قائمة الحسابات">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <ListView fx:id="accountsListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <top>
+                        <GridPane style="-fx-background-color: #f8f9fa; -fx-padding: 10; -fx-border-color: #ccc; -fx-border-width: 0 0 1 0;" hgap="10.0">
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label fx:id="accountNameLabel" styleClass="title" text="اختر حساباً لعرض كشف الحساب" GridPane.columnIndex="0" />
+                              <Label fx:id="currentBalanceLabel" styleClass="title" text="الرصيد الحالي: 0.00" GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                     </top>
+                     <center>
+                        <StackPane>
+                           <children>
+                              <TableView fx:id="transactionsTableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                <columns>
+                                  <TableColumn fx:id="dateColumn" prefWidth="100.0" text="التاريخ" />
+                                  <TableColumn fx:id="descriptionColumn" prefWidth="250.0" text="البيان" />
+                                    <TableColumn fx:id="debitColumn" prefWidth="100.0" text="مدين" />
+                                    <TableColumn fx:id="creditColumn" prefWidth="100.0" text="دائن" />
+                                    <TableColumn fx:id="balanceColumn" prefWidth="120.0" text="الرصيد" />
+                                </columns>
+                              </TableView>
+                              <ProgressIndicator fx:id="progressIndicator" visible="false" />
+                           </children>
+                        </StackPane>
+                     </center>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

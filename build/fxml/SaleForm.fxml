@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox styleClass="form-dialog-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.SaleFormController">
+   <children>
+      
+      <!-- رأس النموذج الحديث -->
+      <HBox styleClass="form-dialog-header">
+         <children>
+            <FontIcon iconLiteral="fa-dollar" iconSize="28" styleClass="text-white" />
+            <Label styleClass="title-lg" text="فاتورة بيع جديدة" />
+         </children>
+      </HBox>
+      
+      <!-- محتوى النموذج -->
+      <ScrollPane fitToWidth="true" styleClass="form-dialog-content" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox spacing="24">
+               <children>
+                  
+                  <!-- قسم بيانات البيع -->
+                  <VBox styleClass="modern-form-section">
+                     <children>
+                        <HBox styleClass="form-section-header" alignment="CENTER_LEFT" spacing="8">
+                           <children>
+                              <FontIcon iconLiteral="fa-shopping-cart" iconSize="18" />
+                              <Label text="بيانات عملية البيع" />
+                           </children>
+                        </HBox>
+                        
+                        <GridPane styleClass="modern-form-grid">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="150.0" prefWidth="150.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="300.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="50.0" />
+                              <RowConstraints minHeight="50.0" />
+                              <RowConstraints minHeight="50.0" />
+                              <RowConstraints minHeight="50.0" />
+                              <RowConstraints minHeight="50.0" />
+                              <RowConstraints minHeight="50.0" />
+                           </rowConstraints>
+                           <children>
+                              <Label styleClass="form-field-label" text="تاريخ البيع:" GridPane.rowIndex="0" />
+                              <DatePicker fx:id="saleDatePicker" styleClass="modern-date-picker" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              
+                              <Label styleClass="form-field-label" text="العميل:" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="customerComboBox" styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              
+                              <Label styleClass="form-field-label" text="المحصول:" GridPane.rowIndex="2" />
+                              <HBox alignment="CENTER_LEFT" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <children>
+                                    <ComboBox fx:id="cropComboBox" styleClass="modern-combo-box" HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="currentStockLabel" styleClass="form-field-info-label" text="المخزون: --" />
+                                 </children>
+                              </HBox>
+                              
+                              <Label styleClass="form-field-label" text="رقم الفاتورة:" GridPane.rowIndex="3" />
+                              <TextField fx:id="invoiceNumberField" styleClass="modern-text-field" promptText="سيتم إنشاؤه تلقائياً" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  
+                  <!-- قسم الكمية والتسعير -->
+                  <VBox styleClass="modern-form-section">
+                     <children>
+                        <HBox styleClass="form-section-header" alignment="CENTER_LEFT" spacing="8">
+                           <children>
+                              <FontIcon iconLiteral="fa-balance-scale" iconSize="18" />
+                              <Label text="الكمية والتسعير" />
+                           </children>
+                        </HBox>
+                        
+                        <GridPane styleClass="modern-form-grid">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="150.0" prefWidth="150.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="300.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="50.0" />
+                              <RowConstraints minHeight="50.0" />
+                              <RowConstraints minHeight="50.0" />
+                              <RowConstraints minHeight="60.0" />
+                           </rowConstraints>
+                           <children>
+                              <Label styleClass="form-field-label" text="الكمية (كجم):" GridPane.rowIndex="0" />
+                              <TextField fx:id="quantityKgField" styleClass="modern-text-field" promptText="الوزن بالكيلو" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              
+                              <Label styleClass="form-field-label" text="وحدة التسعير:" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="pricingUnitComboBox" styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              
+                              <Label styleClass="form-field-label" text="سعر الوحدة:" GridPane.rowIndex="2" />
+                              <TextField fx:id="unitPriceField" styleClass="modern-text-field" promptText="السعر لكل وحدة" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              
+                              <Label styleClass="form-field-label analysis-label" text="المبلغ الإجمالي:" GridPane.rowIndex="3" />
+                              <TextField fx:id="totalAmountField" styleClass="modern-text-field analysis-metric" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  
+                  <!-- قسم الدفع -->
+                  <VBox styleClass="modern-form-section">
+                     <children>
+                        <HBox styleClass="form-section-header" alignment="CENTER_LEFT" spacing="8">
+                           <children>
+                              <FontIcon iconLiteral="fa-credit-card" iconSize="18" />
+                              <Label text="بيانات الدفع" />
+                           </children>
+                        </HBox>
+                        
+                        <GridPane styleClass="modern-form-grid">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="150.0" prefWidth="150.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="300.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="50.0" />
+                              <RowConstraints minHeight="50.0" />
+                              <RowConstraints minHeight="50.0" />
+                           </rowConstraints>
+                           <children>
+                              <Label styleClass="form-field-label" text="المبلغ المقبوض:" GridPane.rowIndex="0" />
+                              <TextField fx:id="amountReceivedField" styleClass="modern-text-field" text="0.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              
+                              <Label styleClass="form-field-label" text="طريقة التحصيل:" GridPane.rowIndex="1" />
+                              <HBox spacing="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <RadioButton fx:id="cashPaymentRadio" styleClass="modern-radio-button" text="تحصيل نقدي" />
+                                    <RadioButton fx:id="bankPaymentRadio" styleClass="modern-radio-button" text="تحصيل بنكي" />
+                                 </children>
+                              </HBox>
+                              
+                              <Label fx:id="bankAccountLabel" styleClass="form-field-label" text="الحساب البنكي:" GridPane.rowIndex="2" />
+                              <ComboBox fx:id="bankAccountComboBox" styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  
+                  <!-- قسم تحليل الربحية -->
+                  <VBox styleClass="analysis-section">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                           <children>
+                              <FontIcon iconLiteral="fa-line-chart" iconSize="20" styleClass="text-white" />
+                              <Label styleClass="analysis-label" text="تحليل الربحية والتوصيات" />
+                           </children>
+                        </HBox>
+                        
+                        <GridPane hgap="24" vgap="16">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="150.0" prefWidth="150.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="300.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="40.0" />
+                              <RowConstraints minHeight="60.0" />
+                           </rowConstraints>
+                           <children>
+                              <Label styleClass="analysis-label" text="هامش الربح المتوقع:" GridPane.rowIndex="0" />
+                              <Label fx:id="profitMarginLabel" styleClass="analysis-metric" text="--" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              
+                              <Label styleClass="analysis-label" text="التوصية:" GridPane.rowIndex="1" />
+                              <Label fx:id="recommendationLabel" styleClass="analysis-recommendation" wrapText="true" text="سيتم عرض التوصيات بعد إدخال بيانات العملية..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+      
+      <!-- أزرار العمليات -->
+      <HBox styleClass="form-dialog-footer">
+         <children>
+            <Button onAction="#handleCancel" styleClass="form-button-secondary" text="إلغاء" />
+            <Button onAction="#handleSave" styleClass="form-button-primary" text="حفظ فاتورة البيع" />
+         </children>
+      </HBox>
+      
+   </children>
+</VBox>

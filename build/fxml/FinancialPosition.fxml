@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.ProgressIndicator?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1200.0" styleClass="main-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.FinancialPositionController">
+   <children>
+      <VBox spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <Label styleClass="title" text="المركز المالي للمشروع">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Separator prefWidth="200.0" />
+            <VBox VBox.vgrow="ALWAYS">
+               <children>
+                  <StackPane VBox.vgrow="ALWAYS">
+                     <children>
+                  <GridPane fx:id="financialPositionGrid" hgap="20.0" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <VBox spacing="15.0" styleClass="card" GridPane.columnIndex="1">
+                           <children>
+                              <Label styleClass="title" text="الموجودات (الأصول)" />
+                              <Separator prefWidth="200.0" />
+                              <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="stat-label" text="النقدية وما في حكمها" />
+                                    <Label fx:id="totalCashLabel" styleClass="stat-value" text="0.00 ج.م" />
+                                    <TableView fx:id="cashAccountsTable" prefHeight="100.0">
+                                      <columns>
+                                        <TableColumn fx:id="cashAccountNameColumn" prefWidth="250.0" text="الحساب" />
+                                        <TableColumn fx:id="cashAccountBalanceColumn" prefWidth="150.0" text="الرصيد" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                              <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="stat-label" text="المخزون" />
+                                    <Label fx:id="totalInventoryLabel" styleClass="stat-value" text="0.00 ج.م" />
+                                    <PieChart fx:id="inventoryPieChart" legendVisible="false" prefHeight="150.0" />
+                                 </children>
+                              </VBox>
+                              <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="stat-label" text="العملاء (الذمم المدينة)" />
+                                    <Label fx:id="totalReceivablesLabel" styleClass="stat-value" text="0.00 ج.م" />
+                                    <Label styleClass="subtitle" text="أكبر 5 مدينين:" />
+                                    <ListView fx:id="topDebtorsListView" prefHeight="100.0" />
+                                 </children>
+                              </VBox>
+                              <Separator prefWidth="200.0" />
+                              <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                 <children>
+                                    <Label fx:id="totalAssetsLabel" styleClass="title" text="0.00 ج.م" />
+                                    <Label styleClass="title" text="إجمالي الأصول:" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox spacing="15.0" styleClass="card">
+                           <children>
+                              <Label styleClass="title" text="المطلوبات وحقوق الملكية" />
+                              <Separator prefWidth="200.0" />
+                              <Label styleClass="subtitle" text="الالتزامات (المطلوبات)" />
+                              <VBox styleClass="stat-card">
+                                 <children>
+                                    <Label styleClass="stat-label" text="الموردون (الذمم الدائنة)" />
+                                    <Label fx:id="totalPayablesLabel" styleClass="stat-value" text="0.00 ج.م" />
+                                    <Label styleClass="subtitle" text="أكبر 5 دائنين:" />
+                                    <ListView fx:id="topCreditorsListView" prefHeight="100.0" />
+                                 </children>
+                              </VBox>
+                              <VBox styleClass="stat-card">
+                                 <children>
+                                    <Label styleClass="stat-label" text="الأرصدة الافتتاحية" />
+                                    <Label fx:id="openingCapitalLabel" styleClass="stat-value" text="0.00 ج.م" />
+                                 </children>
+                              </VBox>
+                              <VBox styleClass="stat-card">
+                                 <children>
+                                    <Label styleClass="stat-label" text="صافي الربح / الخسارة للفترة" />
+                                    <Label fx:id="netProfitLabel" styleClass="stat-value" text="0.00 ج.م" />
+                                 </children>
+                              </VBox>
+                              <Separator prefWidth="200.0" />
+                              <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                 <children>
+                                    <Label fx:id="totalLiabilitiesAndEquityLabel" styleClass="title" text="0.00 ج.م" />
+                                    <Label styleClass="title" text="إجمالي المطلوبات وحقوق الملكية:" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </GridPane>
+                        <ProgressIndicator fx:id="progressIndicator" maxHeight="100.0" maxWidth="100.0" visible="false" />
+                     </children>
+                  </StackPane>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

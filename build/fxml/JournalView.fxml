@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox styleClass="report-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.JournalViewController">
+   <children>
+      
+      <!-- رأس التقرير المحسن -->
+      <VBox styleClass="report-header">
+         <children>
+            <HBox alignment="CENTER_LEFT" styleClass="spacing-md">
+               <children>
+                  <FontIcon iconLiteral="fa-book" iconSize="32" styleClass="text-primary" />
+                  <VBox>
+                     <children>
+                        <Label styleClass="title-lg" text="دفتر اليومية العام" />
+                        <Label fx:id="currentPeriodLabel" styleClass="text-sm text-muted" text="الفترة: اليوم" />
+                     </children>
+                  </VBox>
+                  <Region HBox.hgrow="ALWAYS" />
+                  
+                  <!-- Quick Actions Integrated -->
+                  <HBox alignment="CENTER_RIGHT" spacing="8">
+                     <children>
+                        <Button fx:id="newSaleBillBtn" onAction="#handleNewSaleBill" styleClass="primary" text="فاتورة بيع جديدة">
+                           <graphic><FontIcon iconLiteral="fa-cart-plus" iconSize="16" /></graphic>
+                        </Button>
+                        <Button fx:id="newPurchaseBillBtn" onAction="#handleNewPurchaseBill" styleClass="secondary" text="فاتورة شراء">
+                           <graphic><FontIcon iconLiteral="fa-shopping-basket" iconSize="16" /></graphic>
+                        </Button>
+                        <Button fx:id="newExpenseBtn" onAction="#handleNewExpense" styleClass="warning" text="تسجيل مصروف">
+                           <graphic><FontIcon iconLiteral="fa-credit-card" iconSize="16" /></graphic>
+                        </Button>
+                                                <Button fx:id="newPaymentReceiptBtn" onAction="#handleNewPaymentReceipt" styleClass="info" text="سند صرف/قبض">
+                           <graphic><FontIcon iconLiteral="fa-file-text-o" iconSize="16" /></graphic>
+                        </Button>
+                        <Separator orientation="VERTICAL" />
+                        <Button fx:id="refreshBtn" onAction="#handleRefresh" styleClass="icon-button">
+                           <graphic><FontIcon iconLiteral="fa-refresh" iconSize="16" /></graphic>
+                           <tooltip><Tooltip text="تحديث" /></tooltip>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      
+      <!-- بطاقات إحصائية -->
+      <GridPane hgap="16.0" vgap="16.0" styleClass="spacing-md">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <!-- بطاقة الرصيد الافتتاحي -->
+            <VBox styleClass="stat-card bg-info-light" GridPane.columnIndex="0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" styleClass="spacing-sm">
+                     <children>
+                        <FontIcon iconLiteral="fa-calendar-o" iconSize="24" styleClass="text-info" />
+                        <Label styleClass="text-sm text-muted" text="رصيد أول المدة" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="openingBalanceLabel" styleClass="stat-value text-info" text="0.00 ج.م" />
+               </children>
+            </VBox>
+            
+            <!-- بطاقة النقدية الواردة -->
+            <VBox styleClass="stat-card bg-success-light" GridPane.columnIndex="1">
+               <children>
+                  <HBox alignment="CENTER_LEFT" styleClass="spacing-sm">
+                     <children>
+                        <FontIcon iconLiteral="fa-arrow-down" iconSize="24" styleClass="text-success" />
+                        <Label styleClass="text-sm text-muted" text="إجمالي الواردات" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="totalCashInLabel" styleClass="stat-value text-success" text="0.00 ج.م" />
+                  <Label fx:id="totalCashInCountLabel" styleClass="text-xs text-muted" text="0 عملية" />
+               </children>
+            </VBox>
+            
+            <!-- بطاقة النقدية الصادرة -->
+            <VBox styleClass="stat-card bg-danger-light" GridPane.columnIndex="2">
+               <children>
+                  <HBox alignment="CENTER_LEFT" styleClass="spacing-sm">
+                     <children>
+                        <FontIcon iconLiteral="fa-arrow-up" iconSize="24" styleClass="text-danger" />
+                        <Label styleClass="text-sm text-muted" text="إجمالي المصروفات" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="totalCashOutLabel" styleClass="stat-value text-danger" text="0.00 ج.م" />
+                  <Label fx:id="totalCashOutCountLabel" styleClass="text-xs text-muted" text="0 عملية" />
+               </children>
+            </VBox>
+            
+            <!-- بطاقة الرصيد الختامي -->
+            <VBox styleClass="stat-card bg-primary-light" GridPane.columnIndex="3">
+               <children>
+                  <HBox alignment="CENTER_LEFT" styleClass="spacing-sm">
+                     <children>
+                        <FontIcon iconLiteral="fa-balance-scale" iconSize="24" styleClass="text-primary" />
+                        <Label styleClass="text-sm text-muted" text="رصيد آخر المدة" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="closingBalanceLabel" styleClass="stat-value text-primary" text="0.00 ج.م" />
+                  <Label fx:id="netChangeLabel" styleClass="text-xs text-muted" text="صافي التغيير: 0.00" />
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+
+      <!-- Ultra-Compact Filter Bar -->
+      <HBox styleClass="ultra-compact-filter-bar" alignment="CENTER_LEFT" spacing="12">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="8">
+               <children>
+                  <FontIcon iconLiteral="fa-filter" iconSize="16" styleClass="text-primary" />
+                  <Label styleClass="filter-title-mini" text="فلترة:" />
+               </children>
+            </HBox>
+            <HBox spacing="4">
+               <children>
+                  <Button fx:id="todayBtn" mnemonicParsing="false" onAction="#handleFilterToday" styleClass="mini-preset-btn" text="اليوم" />
+                  <Button fx:id="thisWeekBtn" mnemonicParsing="false" onAction="#handleFilterThisWeek" styleClass="mini-preset-btn" text="الأسبوع" />
+                  <Button fx:id="thisMonthBtn" mnemonicParsing="false" onAction="#handleFilterThisMonth" styleClass="mini-preset-btn" text="الشهر" />
+               </children>
+            </HBox>
+            <HBox spacing="6" alignment="CENTER_LEFT">
+               <children>
+                  <DatePicker fx:id="fromDatePicker" styleClass="mini-date-picker" prefWidth="100" promptText="من" />
+                  <Label text="→" styleClass="date-separator" />
+                  <DatePicker fx:id="toDatePicker" styleClass="mini-date-picker" prefWidth="100" promptText="إلى" />
+               </children>
+            </HBox>
+            <ComboBox fx:id="transactionTypeFilter" styleClass="mini-combo-box" prefWidth="120" promptText="النوع" />
+            <HBox spacing="4" alignment="CENTER_LEFT">
+               <children>
+                  <FontIcon iconLiteral="fa-search" iconSize="12" styleClass="search-icon-mini" />
+                  <TextField fx:id="searchField" styleClass="mini-search-field" prefWidth="140" promptText="بحث سريع..." />
+               </children>
+            </HBox>
+            <HBox spacing="4">
+               <children>
+                  <Button fx:id="filterButton" contentDisplay="LEFT" mnemonicParsing="false" onAction="#handleFilter" styleClass="mini-apply-btn" text="تطبيق">
+                     <graphic><FontIcon iconLiteral="fa-check" iconSize="10" /></graphic>
+                  </Button>
+                  <Button fx:id="clearButton" mnemonicParsing="false" onAction="#handleClearFilters" styleClass="mini-clear-btn">
+                     <graphic><FontIcon iconLiteral="fa-times" iconSize="10" /></graphic>
+                     <tooltip><Tooltip text="مسح الفلاتر" /></tooltip>
+                  </Button>
+               </children>
+            </HBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER_RIGHT" spacing="8">
+               <children>
+                  <Label fx:id="resultsCountLabel" styleClass="results-counter-mini" text="0 نتيجة" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      
+
+      
+      <!-- جدول اليومية المحسن -->
+      <VBox styleClass="card" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox alignment="CENTER_LEFT" styleClass="spacing-md">
+               <children>
+                  <Label styleClass="text-md font-bold" text="📋 سجل العمليات" />
+                  <Region HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            
+            <Separator />
+            
+            <StackPane VBox.vgrow="ALWAYS">
+               <children>
+                  <TableView fx:id="journalTable" prefHeight="400.0" styleClass="enhanced-table">
+                    <columns>
+                      <TableColumn fx:id="dateColumn" prefWidth="120.0" text="التاريخ" />
+                      <TableColumn fx:id="descriptionColumn" prefWidth="450.0" text="البيان" />
+                      <TableColumn fx:id="inflowColumn" prefWidth="150.0" text="وارد" />
+                      <TableColumn fx:id="outflowColumn" prefWidth="150.0" text="صادر" />
+                      <TableColumn fx:id="balanceColumn" prefWidth="150.0" text="الرصيد" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <ProgressIndicator fx:id="progressIndicator" visible="false" />
+                  
+                  <!-- رسالة عدم وجود بيانات -->
+                  <VBox fx:id="noDataMessage" alignment="CENTER" visible="false" styleClass="spacing-md">
+                     <children>
+                        <FontIcon iconLiteral="fa-exclamation-circle" iconSize="48" styleClass="text-muted" />
+                        <Label styleClass="text-lg text-muted" text="لا توجد عمليات في الفترة المحددة" />
+                        <Label styleClass="text-sm text-muted" text="جرب تغيير الفترة الزمنية أو مسح الفلاتر" />
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+         </children>
+      </VBox>
+      
+   </children>
+</VBox>

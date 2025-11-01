@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.PerformanceReportController">
+   <content>
+      <VBox fx:id="reportContainer" alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: white; -fx-padding: 20;">
+         <children>
+            <VBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Label text="تقرير الأداء الشامل" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                  <Label fx:id="dateRangeLabel" text="للفترة من: dd/MM/yyyy إلى: dd/MM/yyyy" />
+                  <Label fx:id="generatedDateLabel" text="تاريخ الإنشاء: dd/MM/yyyy" style="-fx-font-size: 11px; -fx-text-fill: grey;" />
+               </children>
+            </VBox>
+            <Separator />
+            
+            <VBox spacing="10.0">
+               <children>
+                  <Label text="مؤشرات الأداء الرئيسية (KPIs)" styleClass="title" />
+                  <GridPane fx:id="kpiGridPane" hgap="20.0" vgap="10.0" />
+               </children>
+            </VBox>
+            <Separator />
+            
+            <VBox spacing="10.0">
+               <children>
+                  <Label text="تحليل الربحية الإجمالي" styleClass="title" />
+                  <GridPane fx:id="profitabilityGridPane" hgap="20.0" vgap="10.0" />
+               </children>
+            </VBox>
+            <Separator />
+            
+            <VBox spacing="10.0">
+               <children>
+                  <Label text="التوصيات الاستراتيجية" styleClass="title" />
+                  <VBox fx:id="recommendationsVBox" spacing="10.0" />
+               </children>
+            </VBox>
+            <Separator />
+            
+            <VBox spacing="10.0">
+               <children>
+                  <Label text="تحليل الأداء التفصيلي للمحاصيل" styleClass="title" />
+                  <TableView fx:id="cropPerformanceTable" prefHeight="300.0">
+                    <columns>
+                      <TableColumn fx:id="cropNameColumn" prefWidth="150.0" text="المحصول" />
+                      <TableColumn fx:id="revenueColumn" prefWidth="120.0" text="الإيرادات" />
+                      <TableColumn fx:id="costsColumn" prefWidth="120.0" text="التكاليف" />
+                      <TableColumn fx:id="profitColumn" prefWidth="120.0" text="الربح" />
+                      <TableColumn fx:id="profitMarginColumn" prefWidth="100.0" text="هامش الربح (%)" />
+                      <TableColumn fx:id="roiColumn" prefWidth="100.0" text="العائد على الاستثمار (%)" />
+                      <TableColumn fx:id="ratingColumn" prefWidth="120.0" text="تقييم الأداء" />
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

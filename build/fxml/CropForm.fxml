@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox styleClass="window-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.CropFormController">
+   <children>
+      
+      <!-- رأس النافذة -->
+      <HBox styleClass="report-header" alignment="CENTER_LEFT">
+         <children>
+            <FontIcon iconLiteral="fa-leaf" iconSize="24" styleClass="text-success" />
+            <Label styleClass="title-lg" text="إدارة المحاصيل" />
+         </children>
+      </HBox>
+      
+      <!-- محتوى النافذة -->
+      <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox styleClass="padding-lg spacing-lg">
+               <children>
+                  
+                  <!-- قسم المعلومات الأساسية -->
+                  <VBox styleClass="card">
+                     <children>
+                        <Label styleClass="title-md" text="معلومات المحصول" />
+                        
+                        <GridPane hgap="16.0" vgap="16.0" styleClass="padding-md">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="120.0" />
+                              <ColumnConstraints hgrow="ALWAYS" />
+                           </columnConstraints>
+                           <children>
+                              <Label text="اسم المحصول:" GridPane.rowIndex="0" />
+                              <TextField fx:id="cropNameField" promptText="أدخل اسم المحصول..." GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  
+                  <!-- جدول الوحدات -->
+                  <VBox styleClass="card">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" styleClass="card-header">
+                           <children>
+                              <Label styleClass="title-md" text="وحدات التسعير ومعاملات التحويل" />
+                              <Region HBox.hgrow="ALWAYS" />
+                              <Button onAction="#handleAddUnit" text="إضافة وحدة" styleClass="button-sm" />
+                              <Button onAction="#handleRemoveUnit" styleClass="danger, button-sm" text="حذف المحدد" />
+                           </children>
+                        </HBox>
+                        
+                        <Label styleClass="text-sm" text="حدد وحدات القياس المختلفة ومعامل تحويلها إلى الكيلوجرام" />
+                        
+                        <TableView fx:id="unitsTable" editable="true" prefHeight="200.0">
+                           <columns>
+                              <TableColumn fx:id="unitNameColumn" prefWidth="200.0" text="اسم الوحدة (مثال: أردب)" />
+                              <TableColumn fx:id="conversionFactorColumn" prefWidth="230.0" text="تساوي كم كيلو جرام؟ (مثال: 150.0)" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+      
+      <!-- أزرار التحكم -->
+      <HBox alignment="CENTER_RIGHT" styleClass="padding-lg spacing-sm">
+         <children>
+            <Button onAction="#handleSave" styleClass="success" text="حفظ" />
+            <Button onAction="#handleCancel" styleClass="secondary" text="إلغاء" />
+         </children>
+      </HBox>
+      
+   </children>
+</VBox>

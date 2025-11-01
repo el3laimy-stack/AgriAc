@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<ScrollPane fitToWidth="true" styleClass="main-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.ReportsDashboardController">
+   <content>
+      <VBox spacing="20.0">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <children>
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <FontIcon iconLiteral="fa-bar-chart" iconSize="28" styleClass="text-primary" />
+                  <Label styleClass="title-lg" text="مركز التقارير" />
+               </children>
+            </HBox>
+
+            <!-- Report Cards -->
+            <FlowPane fx:id="reportsFlowPane" hgap="20" vgap="20">
+               <children>
+                  <!-- Income Statement Card -->
+                  <VBox styleClass="report-card">
+                     <children>
+                        <Label styleClass="report-card-title" text="قائمة الدخل" />
+                        <Label styleClass="report-card-description" text="عرض الإيرادات والمصروفات وصافي الربح لفترة محددة." />
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                           <children>
+                              <DatePicker fx:id="incomeStmtFromDate" promptText="من تاريخ" />
+                              <DatePicker fx:id="incomeStmtToDate" promptText="إلى تاريخ" />
+                           </children>
+                        </HBox>
+                        <Button onAction="#generateIncomeStatement" text="إنشاء التقرير" />
+                     </children>
+                  </VBox>
+
+                  <!-- Balance Sheet Card -->
+                  <VBox styleClass="report-card">
+                     <children>
+                        <Label styleClass="report-card-title" text="الميزانية العمومية" />
+                        <Label styleClass="report-card-description" text="عرض الأصول والخصوم وحقوق الملكية في تاريخ محدد." />
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                           <children>
+                              <DatePicker fx:id="balanceSheetDate" promptText="في تاريخ" />
+                           </children>
+                        </HBox>
+                        <Button onAction="#generateBalanceSheet" text="إنشاء التقرير" />
+                     </children>
+                  </VBox>
+
+                  <!-- General Ledger Card -->
+                  <VBox styleClass="report-card">
+                     <children>
+                        <Label styleClass="report-card-title" text="دفتر الأستاذ العام" />
+                        <Label styleClass="report-card-description" text="عرض جميع الحركات المالية لجميع الحسابات." />
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                           <children>
+                              <DatePicker fx:id="generalLedgerFromDate" promptText="من تاريخ" />
+                              <DatePicker fx:id="generalLedgerToDate" promptText="إلى تاريخ" />
+                           </children>
+                        </HBox>
+                        <Button onAction="#generateGeneralLedger" text="إنشاء التقرير" />
+                     </children>
+                  </VBox>
+
+               </children>
+            </FlowPane>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox styleClass="report-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.IncomeStatementController">
+   <children>
+      
+      <!-- رأس التقرير -->
+      <VBox styleClass="report-header">
+         <children>
+            <HBox alignment="CENTER_LEFT" styleClass="spacing-md">
+               <children>
+                  <FontIcon iconLiteral="fa-money" iconSize="28" styleClass="text-success" />
+                  <Label styleClass="title-lg" text="قائمة الدخل" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label styleClass="text-sm" text="من:" />
+                  <DatePicker fx:id="fromDatePicker" prefWidth="150.0" />
+                  <Label styleClass="text-sm" text="إلى:" />
+                  <DatePicker fx:id="toDatePicker" prefWidth="150.0" />
+                  <Button fx:id="viewButton" onAction="#handleViewButton" text="عرض" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      
+      <!-- محتوى التقرير -->
+      <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox styleClass="spacing-lg">
+               <children>
+                  
+                  <!-- مؤشر التحميل -->
+                  <StackPane>
+                     <children>
+                        
+                        <!-- شبكة الإيرادات والمصروفات -->
+                        <GridPane hgap="24.0" vgap="24.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints vgrow="ALWAYS" />
+                           </rowConstraints>
+                           <children>
+                              
+                              <!-- بطاقة الإيرادات -->
+                              <VBox styleClass="card" GridPane.columnIndex="0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" styleClass="card-header">
+                                       <children>
+                                          <FontIcon iconLiteral="fa-arrow-up" styleClass="text-success" />
+                                          <Label styleClass="title-md" text="الإيرادات" />
+                                       </children>
+                                    </HBox>
+                                    
+                                    <TableView fx:id="revenueTable" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="revenueNameColumn" prefWidth="250.0" text="بيان الإيراد" />
+                                          <TableColumn fx:id="revenueValueColumn" prefWidth="150.0" text="المبلغ" />
+                                       </columns>
+                                    </TableView>
+                                    
+                                    <HBox alignment="CENTER_RIGHT" styleClass="report-total">
+                                       <children>
+                                          <Label styleClass="text-lg font-bold" text="إجمالي الإيرادات:" />
+                                          <Label fx:id="totalRevenueLabel" styleClass="text-lg font-bold" text="0.00" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              
+                              <!-- بطاقة المصروفات -->
+                              <VBox styleClass="card" spacing="10" GridPane.columnIndex="1">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" styleClass="card-header">
+                                       <children>
+                                          <FontIcon iconLiteral="fa-arrow-down" styleClass="text-danger" />
+                                          <Label styleClass="title-md" text="المصروفات" />
+                                       </children>
+                                    </HBox>
+                                    
+                                    <TableView fx:id="expenseTable" prefHeight="200.0">
+                                       <columns>
+                                          <TableColumn fx:id="expenseNameColumn" prefWidth="250.0" text="بيان المصروف" />
+                                          <TableColumn fx:id="expenseValueColumn" prefWidth="150.0" text="المبلغ" />
+                                       </columns>
+                                    </TableView>
+
+                                    <PieChart fx:id="expensePieChart" title="توزيع المصروفات" prefHeight="250.0" VBox.vgrow="ALWAYS" />
+                                    
+                                    <HBox alignment="CENTER_RIGHT" styleClass="report-total">
+                                       <children>
+                                          <Label styleClass="text-lg font-bold" text="إجمالي المصروفات:" />
+                                          <Label fx:id="totalExpenseLabel" styleClass="text-lg font-bold" text="0.00" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              
+                           </children>
+                        </GridPane>
+                        
+                        <!-- مؤشر التحميل -->
+                        <ProgressIndicator fx:id="progressIndicator" visible="false" />
+                        
+                     </children>
+                  </StackPane>
+                  
+                  <!-- صافي الربح -->
+                  <VBox styleClass="card">
+                     <children>
+                        <HBox alignment="CENTER" styleClass="report-total">
+                           <children>
+                              <FontIcon iconLiteral="fa-calculator" iconSize="24" styleClass="text-primary" />
+                              <Label styleClass="title-md" text="صافي الربح / الخسارة:" />
+                              <Label fx:id="netIncomeLabel" styleClass="title-md font-bold" text="0.00" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+      
+   </children>
+</VBox>

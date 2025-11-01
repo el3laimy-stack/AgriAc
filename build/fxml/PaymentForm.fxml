@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox styleClass="window-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.PaymentFormController">
+   <!-- Header -->
+   <HBox styleClass="report-header" alignment="CENTER_LEFT">
+      <FontIcon iconLiteral="fa-money" iconSize="24" styleClass="text-warning" />
+      <Label styleClass="title-lg" text="سند صرف/قبض" />
+   </HBox>
+   
+   <!-- Scrollable Content -->
+   <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+      <VBox styleClass="spacing-lg">
+         <VBox styleClass="card">
+            <GridPane hgap="10.0" vgap="15.0" styleClass="padding-lg">
+               <Label text="التاريخ:" />
+               <DatePicker fx:id="paymentDatePicker" prefWidth="350.0" GridPane.columnIndex="1" />
+
+               <Label text="نوع الحركة:" GridPane.rowIndex="1" />
+               <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <RadioButton fx:id="receiveRadio" text="سند قبض (من عميل)" />
+                  <RadioButton fx:id="payRadio" text="سند صرف (لمورد)" />
+               </HBox>
+
+               <Label text="العميل/المورد:" GridPane.rowIndex="2" />
+               <ComboBox fx:id="contactComboBox" prefWidth="350.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+               <Label text="المبلغ:" GridPane.rowIndex="3" />
+               <TextField fx:id="amountField" promptText="أدخل المبلغ" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+               <Label text="طريقة الدفع/التحصيل:" GridPane.rowIndex="4" />
+               <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <RadioButton fx:id="cashRadio" text="نقدي" />
+                  <RadioButton fx:id="bankRadio" text="بنكي" />
+               </HBox>
+
+               <Label fx:id="bankAccountLabel" text="الحساب البنكي:" GridPane.rowIndex="5" />
+               <ComboBox fx:id="bankAccountComboBox" prefWidth="350.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+               <Label text="البيان/الوصف:" GridPane.rowIndex="6" />
+               <TextArea fx:id="descriptionArea" prefHeight="80.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            </GridPane>
+         </VBox>
+      </VBox>
+   </ScrollPane>
+   
+   <!-- Action Buttons -->
+   <HBox alignment="CENTER_LEFT" styleClass="spacing-md">
+      <Button onAction="#handleSave" styleClass="primary" text="حفظ" />
+      <Button onAction="#handleCancel" styleClass="secondary" text="إلغاء" />
+   </HBox>
+</VBox>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<!-- 
+نموذج النافذة الموحدة
+استخدم هذا النموذج لجميع النوافذ في التطبيق لضمان التجانس
+-->
+
+<VBox styleClass="window-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      
+      <!-- رأس النافذة -->
+      <HBox styleClass="report-header" alignment="CENTER_LEFT">
+         <children>
+            <FontIcon iconLiteral="fa-edit" iconSize="24" styleClass="text-primary" />
+            <Label styleClass="title-lg" text="عنوان النافذة" />
+            <Region HBox.hgrow="ALWAYS" />
+            <!-- يمكن إضافة أزرار إضافية هنا -->
+         </children>
+      </HBox>
+      
+      <!-- محتوى النافذة -->
+      <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox styleClass="padding-lg spacing-md">
+               <children>
+                  
+                  <!-- قسم المعلومات الأساسية -->
+                  <VBox styleClass="card">
+                     <children>
+                        <Label styleClass="title-md" text="المعلومات الأساسية" />
+                        
+                        <GridPane hgap="16.0" vgap="16.0" styleClass="padding-md">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="120.0" />
+                              <ColumnConstraints hgrow="ALWAYS" />
+                           </columnConstraints>
+                           <children>
+                              <!-- مثال على الحقول -->
+                              <Label text="الحقل الأول:" GridPane.rowIndex="0" />
+                              <TextField promptText="أدخل القيمة..." GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              
+                              <Label text="الحقل الثاني:" GridPane.rowIndex="1" />
+                              <ComboBox promptText="اختر قيمة..." maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  
+                  <!-- جدول البيانات (إذا كان موجوداً) -->
+                  <VBox styleClass="card">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" styleClass="card-header">
+                           <children>
+                              <Label styleClass="title-md" text="البيانات" />
+                              <Region HBox.hgrow="ALWAYS" />
+                              <Button text="إضافة" styleClass="button-sm" />
+                              <Button text="حذف" styleClass="danger, button-sm" />
+                           </children>
+                        </HBox>
+                        
+                        <TableView>
+                           <columns>
+                              <TableColumn prefWidth="200.0" text="العمود الأول" />
+                              <TableColumn prefWidth="150.0" text="العمود الثاني" />
+                              <TableColumn prefWidth="100.0" text="الإجراءات" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+      
+      <!-- أزرار التحكم -->
+      <HBox alignment="CENTER_RIGHT" styleClass="padding-lg spacing-sm">
+         <children>
+            <Button text="حفظ" styleClass="success" />
+            <Button text="إلغاء" styleClass="secondary" />
+         </children>
+      </HBox>
+      
+   </children>
+</VBox>

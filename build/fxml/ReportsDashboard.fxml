@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox spacing="20.0" styleClass="report-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.ReportsDashboardController">
+   <children>
+      <!-- Header -->
+      <HBox alignment="CENTER_LEFT" styleClass="report-header">
+         <children>
+            <FontIcon iconLiteral="fa-bar-chart" iconSize="28" styleClass="text-primary" />
+            <Label styleClass="title-lg" text="مركز التقارير" />
+         </children>
+      </HBox>
+
+      <!-- Reports Grid -->
+      <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+         <content>
+            <TilePane hgap="20" vgap="20">
+               <padding>
+                  <Insets bottom="10" top="10" />
+               </padding>
+               <children>
+
+                  <!-- Financial Reports Card -->
+                  <VBox styleClass="card" spacing="10">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                           <FontIcon iconLiteral="fa-money" styleClass="text-success" iconSize="20"/>
+                           <Label styleClass="title-md" text="التقارير المالية" />
+                        </HBox>
+                        <Button onAction="#handleShowIncomeStatement" text="قائمة الدخل" maxWidth="Infinity"/>
+                        <Button onAction="#handleShowBalanceSheet" text="الميزانية العمومية" maxWidth="Infinity"/>
+                        <Button onAction="#handleShowEquityStatement" text="بيان حقوق الملكية" maxWidth="Infinity"/>
+                        <Button onAction="#handleShowTrialBalance" text="ميزان المراجعة" maxWidth="Infinity"/>
+                     </children>
+                  </VBox>
+
+                  <!-- Ledger Reports Card -->
+                  <VBox styleClass="card" spacing="10">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                           <FontIcon iconLiteral="fa-book" styleClass="text-info" iconSize="20"/>
+                           <Label styleClass="title-md" text="الدفاتر التحليلية" />
+                        </HBox>
+                        <Button onAction="#handleShowGeneralLedger" text="دفتر الأستاذ العام" maxWidth="Infinity"/>
+                        <Button onAction="#handleShowFinancialLedger" text="دفتر الأستاذ المالي" maxWidth="Infinity"/>
+                        <Button onAction="#handleShowFinancialPosition" text="المركز المالي" maxWidth="Infinity"/>
+                     </children>
+                  </VBox>
+
+                  <!-- Operational Reports Card -->
+                  <VBox styleClass="card" spacing="10">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                           <FontIcon iconLiteral="fa-cogs" styleClass="text-warning" iconSize="20"/>
+                           <Label styleClass="title-md" text="تقارير العمليات" />
+                        </HBox>
+                        <Button onAction="#handleShowSeasonalReports" text="التقارير الموسمية" maxWidth="Infinity"/>
+                        <Button onAction="#handleShowDailyPrices" text="الأسعار اليومية" maxWidth="Infinity"/>
+                     </children>
+                  </VBox>
+
+                  <!-- Other Reports Card -->
+                  <VBox styleClass="card" spacing="10">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                           <FontIcon iconLiteral="fa-bell" styleClass="text-danger" iconSize="20"/>
+                           <Label styleClass="title-md" text="أدوات أخرى" />
+                        </HBox>
+                        <Button onAction="#handleShowAlerts" text="التنبيهات الذكية" maxWidth="Infinity"/>
+                     </children>
+                  </VBox>
+
+               </children>
+            </TilePane>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

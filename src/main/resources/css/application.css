@@ -1,0 +1,804 @@
+/* =================================================================
+   ملف الأنماط النهائي - تصميم احترافي (نسخة مصححة ونهائية)
+   ================================================================= */
+
+/* --- المتغيرات والألوان الأساسية --- */
+.root {
+    -fx-base: #f4f7f9; /* خلفية رمادية فاتحة جداً */
+    -fx-background: #FFFFFF;
+    -fx-control-inner-background: #FFFFFF;
+    -fx-accent: #3498DB; /* أزرق سماوي احترافي */
+    -fx-focus-color: -fx-accent;
+    
+    -fx-dark-blue: #2c3e50;
+    -fx-text-primary: #2c3e50;
+    -fx-text-secondary: #8493a5;
+    -fx-border-color-variable: #d0d7de; /* Darkened border color */
+    -fx-success: #008000;
+    -fx-danger: #FF0000;
+    -fx-warning: #f1c40f;
+    -fx-info: #3498db; /* نفس اللون الرئيسي */
+}
+
+/* --- الخطوط --- */
+.label, .button, .text-field, .combo-box, .table-view, .menu-item, .toggle-button, .titled-pane > .title {
+    -fx-font-family: "Cairo", "Segoe UI", sans-serif;
+}
+
+/* --- الهيكل الرئيسي --- */
+.main-container { -fx-background-color: -fx-base; }
+
+.header-bar {
+    -fx-background-color: white;
+    -fx-border-color: -fx-border-color-variable;
+    -fx-border-width: 0 0 1px 0;
+}
+.header-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+/* --- شريط التنقل الجانبي --- */
+.side-navigation-bar {
+    -fx-background-color: -fx-dark-blue;
+    -fx-padding: 15 10;
+    -fx-spacing: 10;
+}
+.side-navigation-bar .button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #bdc3c7; /* لون رمادي فاتح للنص */
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_RIGHT;
+    -fx-pref-width: 200px;
+    -fx-padding: 10 20;
+    -fx-border-width: 0;
+}
+.side-navigation-bar .button .font-icon {
+    -fx-fill: #bdc3c7;
+    -fx-font-size: 1.5em;
+}
+.side-navigation-bar .button:hover {
+    -fx-text-fill: white;
+    -fx-background-color: #34495e88;
+    -fx-background-radius: 8px;
+}
+.side-navigation-bar .button:hover .font-icon { -fx-fill: white; }
+.side-navigation-bar .button.active {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+    -fx-background-radius: 8px;
+}
+.side-navigation-bar .button.active .font-icon { -fx-fill: white; }
+
+
+/* --- البطاقات العامة --- */
+.card {
+    -fx-background-color: -fx-background;
+    -fx-border-width: 0;
+    -fx-background-radius: 8px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 15, 0, 0, 4);
+}
+
+/* --- بطاقات الإحصائيات في لوحة التحكم (معدلة) --- */
+.stat-card {
+    -fx-background-color: -fx-background;
+    -fx-background-radius: 8px;
+    -fx-padding: 15px 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 15, 0, 0, 4);
+    -fx-border-color: -fx-border-color-variable;
+    -fx-border-width: 1px;
+}
+
+.bg-info-light {
+    -fx-background-color: #e7f3fe;
+}
+
+.bg-success-light {
+    -fx-background-color: #eaf7ec;
+}
+
+.bg-danger-light {
+    -fx-background-color: #fbe9e7;
+}
+
+.bg-primary-light {
+    -fx-background-color: #fdeee7;
+}
+
+.stat-label { -fx-font-size: 13px; -fx-text-fill: -fx-text-secondary; }
+.stat-value { -fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: -fx-text-primary; }
+
+.stat-icon-container {
+    -fx-padding: 15px;
+    -fx-background-radius: 50%;
+    -fx-alignment: center;
+}
+.stat-icon { -fx-font-size: 1.8em; -fx-fill: white; }
+
+.success-bg { -fx-background-color: -fx-success; }
+.danger-bg { -fx-background-color: -fx-danger; }
+.warning-bg { -fx-background-color: -fx-warning; }
+.accent-bg { -fx-background-color: -fx-accent; }
+
+
+/* --- الجداول --- */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+.table-view .column-header-background { -fx-background-color: transparent; }
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-border-color-variable;
+    -fx-border-width: 0 0 2px 0;
+    -fx-size: 40px;
+}
+.table-view .column-header .label {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-weight: bold;
+}
+.table-view .table-row-cell {
+    -fx-background-color: -fx-background;
+    -fx-border-color: -fx-border-color-variable;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 12px;
+}
+.table-view .table-row-cell:odd { -fx-background-color: #fcfdfe; }
+.table-view .table-row-cell:selected { -fx-background-color: #eaf2f8; }
+
+.report-header .title-lg {
+    -fx-font-size: 2.2em;
+    -fx-font-weight: 900;
+}
+
+.report-header .button {
+    -fx-padding: 6 12;
+    -fx-font-size: 12px;
+}
+
+.report-header .button.primary {
+    -fx-background-color: -fx-accent;
+}
+
+.report-header .button.secondary {
+    -fx-background-color: -fx-dark-blue;
+}
+
+/* --- Filter Bar --- */
+.filter-bar {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 10px 15px;
+    -fx-border-color: -fx-border-color-variable;
+    -fx-border-width: 1px 0;
+    -fx-background-radius: 8px;
+}
+
+.filter-bar .button {
+    -fx-padding: 5 10;
+    -fx-font-size: 12px;
+}
+
+.filter-bar .text-field, .filter-bar .combo-box, .filter-bar .date-picker {
+    -fx-pref-height: 30px;
+    -fx-font-size: 12px;
+}
+
+/* --- الأزرار وحقول الإدخال --- */
+.button {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 8 20;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+.button:hover { -fx-background-color: derive(-fx-accent, -10%); }
+.button.danger { -fx-background-color: -fx-danger; }
+.button.danger:hover { -fx-background-color: derive(-fx-danger, -10%); }
+.button.success { -fx-background-color: -fx-success; }
+.button.success:hover { -fx-background-color: derive(-fx-success, -10%); }
+.button.secondary { -fx-background-color: #e3e8ee; -fx-text-fill: -fx-text-secondary; }
+.button.secondary:hover { -fx-background-color: derive(#e3e8ee, -5%); }
+
+.text-field, .text-area, .combo-box, .date-picker {
+    -fx-background-color: #f4f7f9;
+    -fx-border-color: #dde3e9;
+    -fx-border-width: 1px;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-font-size: 14px;
+}
+.text-field:focused, .text-area:focused, .combo-box:focused, .date-picker:focused {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: -fx-accent;
+}
+
+/* تنسيقات خاصة لنصوص الأرباح والخسائر */
+.success-text {
+    -fx-text-fill: -fx-success;
+    -fx-font-weight: bold;
+}
+
+.danger-text {
+    -fx-text-fill: -fx-danger;
+    -fx-font-weight: bold;
+}
+
+.description-label {
+    -fx-wrap-text: true;
+}
+
+/* --- Statement View --- */
+.statement-contact-name {
+    -fx-font-size: 24px;
+}
+
+.statement-header-row .statement-cell {
+    -fx-border-color: -fx-border-color-variable;
+    -fx-border-width: 0 1px 0 0;
+    -fx-padding: 4px;
+    -fx-font-size: 14px;
+}
+
+.statement-row .statement-cell {
+    -fx-border-color: -fx-border-color-variable;
+    -fx-padding: 4px;
+    -fx-alignment: CENTER_RIGHT;
+    -fx-font-size: 14px;
+}
+
+.balance-row .statement-cell {
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+}
+
+/* Remove border from the last cell */
+.statement-header-row .statement-cell:last-child,
+.statement-row .statement-cell:last-child {
+    -fx-border-width: 0;
+}
+
+.separator-line {
+    -fx-stroke: -fx-border-color-variable;
+}
+
+/* --- Accordion Navigation Styles --- */
+.side-navigation-bar .accordion {
+    -fx-background-color: transparent;
+}
+
+.side-navigation-bar .titled-pane {
+    -fx-background-color: transparent;
+    -fx-text-fill: #bdc3c7;
+}
+
+.side-navigation-bar .titled-pane > .title {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 10 20;
+}
+
+.side-navigation-bar .titled-pane > .title > .text {
+    -fx-fill: #bdc3c7;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.side-navigation-bar .titled-pane > .title > .arrow-button .arrow {
+    -fx-background-color: #bdc3c7;
+}
+
+.side-navigation-bar .titled-pane:hover > .title {
+    -fx-background-color: #34495e88;
+    -fx-background-radius: 8px;
+}
+
+.side-navigation-bar .titled-pane:hover > .title > .text {
+    -fx-fill: white;
+}
+
+.side-navigation-bar .titled-pane:hover > .title > .arrow-button .arrow {
+    -fx-background-color: white;
+}
+
+.side-navigation-bar .titled-pane > .content {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 15; /* Indent content */
+}
+
+.accordion-vbox {
+    -fx-spacing: 5;
+}
+
+.accordion-vbox .button {
+    -fx-pref-width: 185px; /* Slightly less width for indentation */
+}
+
+/* --- Modern Form Dialog Styles --- */
+
+.form-dialog-container {
+    -fx-background-color: -fx-base;
+    -fx-pref-width: 600px; /* A good default width for dialogs */
+}
+
+.form-dialog-header {
+    -fx-background-color: -fx-dark-blue;
+    -fx-padding: 20px;
+    -fx-alignment: CENTER_RIGHT;
+    -fx-spacing: 15px;
+}
+
+.form-dialog-header .title-lg {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.form-dialog-header .font-icon {
+    -fx-fill: white;
+}
+
+.form-dialog-content {
+    -fx-background-color: -fx-base;
+    -fx-padding: 25px;
+}
+
+.modern-form-section {
+    -fx-spacing: 12px;
+}
+
+.form-section-header {
+    -fx-padding: 0 0 8px 0;
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: -fx-accent;
+}
+
+.form-section-header .label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.form-section-header .font-icon {
+    -fx-fill: -fx-text-secondary;
+}
+
+.modern-form-grid {
+    -fx-hgap: 20px;
+    -fx-vgap: 15px;
+}
+
+.form-field-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+/* --- Input Field Enhancements --- */
+.modern-text-field, .modern-text-area, .modern-combo-box, .modern-date-picker {
+    -fx-font-size: 14px;
+    -fx-background-color: #fff;
+    -fx-border-color: -fx-border-color-variable;
+    -fx-border-width: 1px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-prompt-text-fill: #a0a0a0;
+    -fx-padding: 8px 12px;
+}
+
+.modern-text-field:focused, .modern-text-area:focused, .modern-combo-box:focused, .modern-date-picker:focused {
+    -fx-border-color: -fx-accent;
+    -fx-effect: dropshadow(gaussian, derive(-fx-accent, 50%), 5, 0, 0, 0);
+}
+
+/* Style for invalid fields */
+.modern-text-field:invalid, .modern-text-area:invalid, .modern-combo-box:invalid, .modern-date-picker:invalid {
+    -fx-border-color: -fx-danger;
+}
+
+.form-dialog-footer {
+    -fx-background-color: #e9edf0;
+    -fx-padding: 15px 25px;
+    -fx-alignment: CENTER_RIGHT;
+    -fx-spacing: 10px;
+    -fx-border-width: 1px 0 0 0;
+    -fx-border-color: -fx-border-color-variable;
+}
+
+.form-button-primary {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 25px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+}
+.form-button-primary:hover {
+    -fx-background-color: derive(-fx-accent, -15%);
+}
+
+.form-button-secondary {
+    -fx-background-color: #d0d7de;
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 25px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+}
+.form-button-secondary:hover {
+    -fx-background-color: derive(#d0d7de, -10%);
+}
+
+.text-white {
+    -fx-fill: white;
+}
+
+/* --- Dashboard Redesign Styles --- */
+
+/* Style the cash flow chart bars by series index */
+.default-color0.chart-bar { -fx-bar-fill: -fx-success; } /* Series 0: Inflow */
+.default-color1.chart-bar { -fx-bar-fill: -fx-danger; }  /* Series 1: Outflow */
+
+/* Style the recent activity list */
+.list-view.recent-activity-list {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.list-view.recent-activity-list .list-cell {
+    -fx-padding: 12px 5px;
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: derive(-fx-base, 10%);
+}
+
+.list-view.recent-activity-list .list-cell:last-child {
+    -fx-border-width: 0;
+}
+
+.activity-icon {
+    -fx-font-size: 1.2em;
+}
+.activity-icon.sale {
+    -fx-fill: -fx-success;
+}
+.activity-icon.purchase {
+    -fx-fill: -fx-danger;
+}
+.activity-icon.other {
+    -fx-fill: -fx-text-secondary;
+}
+
+/* ===================================================================
+   Dashboard - Glassmorphism Redesign
+   =================================================================== */
+
+.dashboard-main-container {
+    -fx-background-color: transparent;
+}
+
+.dashboard-background {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2c3e50, #3498db);
+    /* Animation will be handled in controller if needed */
+}
+
+.glass-pane {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-background-radius: 20;
+    -fx-border-color: rgba(255, 255, 255, 0.2);
+    -fx-border-width: 1px;
+    -fx-border-radius: 20;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0, 0, 10);
+}
+
+.kpi-glass-pane {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-background-radius: 15;
+    -fx-border-color: rgba(255, 255, 255, 0.25);
+    -fx-border-width: 1px;
+    -fx-border-radius: 15;
+    -fx-padding: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 15, 0, 0, 5);
+    -fx-transition: all 0.3s ease-in-out;
+}
+
+.kpi-glass-pane:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.25);
+    -fx-border-color: rgba(255, 255, 255, 0.5);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+.kpi-icon-container {
+    -fx-padding: 15px;
+    -fx-background-radius: 50%;
+    -fx-alignment: center;
+}
+
+.kpi-icon-container .font-icon {
+    -fx-font-size: 2em;
+    -fx-fill: white;
+}
+
+.kpi-title {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
+}
+
+.kpi-value {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.kpi-sparkline {
+    -fx-padding: 5px 0 0 0;
+}
+
+.kpi-sparkline .chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.kpi-sparkline .chart-content {
+    -fx-padding: 0;
+}
+
+.kpi-sparkline-axis {
+    -fx-tick-label-fill: transparent;
+    -fx-tick-mark-visible: false;
+    -fx-minor-tick-visible: false;
+    -fx-border-color: transparent;
+}
+.kpi-sparkline-axis .axis-line {
+    -fx-stroke: transparent;
+}
+
+.kpi-sparkline .chart-series-area-line {
+    -fx-stroke: rgba(255, 255, 255, 0.8);
+    -fx-stroke-width: 2px;
+}
+
+.kpi-sparkline .chart-series-area-fill {
+    -fx-fill: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.2));
+}
+
+/* Doughnut Chart Effect */
+.doughnut-chart-container {
+    -fx-alignment: center;
+}
+
+.doughnut-chart-label-container {
+    -fx-alignment: center;
+}
+
+.doughnut-chart-title {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.doughnut-chart-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+/* --- Report Dashboard Card Styles --- */
+
+.report-card {
+    -fx-background-color: -fx-background;
+    -fx-padding: 20px;
+    -fx-spacing: 15px;
+    -fx-background-radius: 12px;
+    -fx-border-width: 1px;
+    -fx-border-color: -fx-border-color-variable;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 3);
+    -fx-pref-width: 350px; /* Control the width of each card */
+}
+
+.report-card-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.report-card-description {
+    -fx-font-size: 13px;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-wrap-text: true;
+}
+
+.report-card .button {
+    -fx-pref-width: 100%;
+}
+
+/* --- Inventory Dashboard Card Styles --- */
+
+.inventory-card {
+    -fx-background-color: -fx-background;
+    -fx-padding: 20px;
+    -fx-background-radius: 12px;
+    -fx-border-width: 1px;
+    -fx-border-color: -fx-border-color-variable;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 3);
+    -fx-pref-width: 320px; /* Control the width of each card */
+}
+
+.inventory-card-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.progress-bar-danger .bar {
+    -fx-background-color: -fx-danger;
+}
+
+.progress-bar-warning .bar {
+    -fx-background-color: -fx-warning;
+}
+
+.progress-bar-success .bar {
+    -fx-background-color: -fx-success;
+}
+
+/* --- Segmented Button Bar Styles --- */
+
+.segmented-button-bar .toggle-button {
+    -fx-background-color: -fx-base;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-border-color: -fx-border-color-variable;
+    -fx-border-width: 1;
+    -fx-background-insets: 0;
+}
+
+.segmented-button-bar .toggle-button:first-child {
+    -fx-border-radius: 0 5 5 0;
+    -fx-background-radius: 0 5 5 0;
+}
+
+.segmented-button-bar .toggle-button:last-child {
+    -fx-border-radius: 5 0 0 5;
+    -fx-background-radius: 5 0 0 5;
+}
+
+.segmented-button-bar .toggle-button:not(:first-child):not(:last-child) {
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+}
+
+.segmented-button-bar .toggle-button:not(:first-child) {
+    -fx-border-width: 1 1 1 0;
+}
+
+.segmented-button-bar .toggle-button:selected {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+    -fx-border-color: -fx-accent;
+}
+
+/* --- Status Cell Styles --- */
+
+.table-cell.status-paid {
+    -fx-text-fill: -fx-success;
+    -fx-font-weight: bold;
+}
+
+.table-cell.status-partial {
+    -fx-text-fill: -fx-warning;
+    -fx-font-weight: bold;
+}
+
+.table-cell.status-unpaid {
+    -fx-text-fill: -fx-danger;
+    -fx-font-weight: bold;
+}
+
+
+
+
+
+
+/* --- Wizard Stepper Styles --- */
+
+.stepper-container {
+    -fx-padding: 20px 40px;
+    -fx-background-color: #f8f9fa;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: -fx-border-color-variable;
+}
+
+.stepper-step {
+    -fx-spacing: 5px;
+    -fx-opacity: 0.5;
+}
+
+.stepper-step .stepper-step-number {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-color: -fx-border-color-variable;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-padding: 5px 12px;
+    -fx-background-radius: 50%;
+}
+
+.stepper-step .stepper-step-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.stepper-separator {
+    -fx-background-color: -fx-border-color-variable;
+    -fx-min-height: 2px;
+    -fx-max-height: 2px;
+    -fx-translate-y: -15px; /* Align with the middle of the number circle */
+}
+
+/* Active and Completed States */
+.stepper-step.active {
+    -fx-opacity: 1.0;
+}
+.stepper-step.active .stepper-step-number {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+}
+.stepper-step.active .stepper-step-label {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-weight: bold;
+}
+
+.stepper-step.completed {
+    -fx-opacity: 1.0;
+}
+.stepper-step.completed .stepper-step-number {
+    -fx-background-color: -fx-success;
+    -fx-text-fill: white;
+}
+
+/* --- Form Step Pane --- */
+.form-step-pane {
+    -fx-background-color: -fx-base;
+}
+
+.form-section-header-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+    -fx-padding: 0 0 15px 0;
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: -fx-accent;
+}
+
+/* --- Summary Card --- */
+.summary-card {
+    -fx-background-color: #e9edf0;
+    -fx-padding: 20px;
+    -fx-background-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-border-color: -fx-border-color-variable;
+    -fx-margin-top: 20px;
+}
+
+.summary-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.summary-value {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-dark-blue;
+}
+
+.summary-value.total {
+    -fx-font-size: 18px;
+    -fx-text-fill: -fx-success;
+}

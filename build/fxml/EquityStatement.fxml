@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.ProgressIndicator?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.EquityStatementController">
+    <VBox alignment="TOP_CENTER" spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <HBox alignment="CENTER" spacing="10.0">
+            <Label text="من تاريخ:"/>
+            <DatePicker fx:id="fromDatePicker"/>
+            <Label text="إلى تاريخ:"/>
+            <DatePicker fx:id="toDatePicker"/>
+            <Button fx:id="generateReportBtn" mnemonicParsing="false" text="إنشاء التقرير" />
+        </HBox>
+        <Separator/>
+        <StackPane VBox.vgrow="ALWAYS">
+           <children>
+              <VBox spacing="20.0">
+                 <children>
+                    <GridPane fx:id="reportGrid" hgap="10" vgap="10" styleClass="card">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label text="رصيد حقوق الملكية (أول المدة):" styleClass="label-bold" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label fx:id="beginningEquityLabel" styleClass="label-value" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        
+                        <Label text="يُضاف: صافي الربح للفترة:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label fx:id="netProfitLabel" styleClass="label-value-positive" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        
+                        <Label text="يُضاف: الإضافات الرأسمالية:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <Label fx:id="capitalAdditionsLabel" styleClass="label-value-positive" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        
+                        <Label text="يُطرح: المسحوبات الشخصية:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <Label fx:id="ownerWithdrawalsLabel" styleClass="label-value-negative" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                        
+                        <Separator GridPane.rowIndex="4" GridPane.columnSpan="2"/>
+                        
+                        <Label text="الرصيد النهائي لحقوق الملكية:" styleClass="label-bold-large" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                        <Label fx:id="endingEquityLabel" styleClass="label-value-large" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                    </GridPane>
+                    <LineChart fx:id="equityChart" title="نمو حقوق الملكية">
+                        <xAxis><CategoryAxis label="الفترة"/></xAxis>
+                        <yAxis><NumberAxis label="قيمة حقوق الملكية"/></yAxis>
+                    </LineChart>
+                 </children>
+              </VBox>
+              <ProgressIndicator fx:id="progressIndicator" visible="false" />
+           </children>
+        </StackPane>
+    </VBox>
+</AnchorPane>

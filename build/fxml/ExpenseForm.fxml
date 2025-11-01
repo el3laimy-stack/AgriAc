@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox styleClass="form-dialog-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.ExpenseFormController">
+   <children>
+      
+      <!-- رأس النموذج الحديث -->
+      <HBox styleClass="form-dialog-header">
+         <children>
+            <FontIcon iconLiteral="fa-money" iconSize="28" styleClass="text-white" />
+            <Label styleClass="title-lg" text="تسجيل مصروف جديد" />
+         </children>
+      </HBox>
+      
+      <!-- محتوى النموذج -->
+      <ScrollPane fitToWidth="true" styleClass="form-dialog-content" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox spacing="24">
+               <children>
+                  
+                  <!-- قسم بيانات المصروف -->
+                  <VBox styleClass="modern-form-section">
+                     <children>
+                        <HBox styleClass="form-section-header" alignment="CENTER_LEFT" spacing="8">
+                           <children>
+                              <FontIcon iconLiteral="fa-file-text" iconSize="18" />
+                              <Label text="بيانات المصروف" />
+                           </children>
+                        </HBox>
+                        
+                        <GridPane styleClass="modern-form-grid">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="140.0" prefWidth="140.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="300.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="50.0" />
+                              <RowConstraints minHeight="50.0" />
+                              <RowConstraints minHeight="50.0" />
+                              <RowConstraints minHeight="50.0" />
+                              <RowConstraints minHeight="120.0" />
+                           </rowConstraints>
+                           <children>
+                              <Label styleClass="form-field-label" text="تاريخ المصروف:" GridPane.rowIndex="0" />
+                              <DatePicker fx:id="datePicker" styleClass="modern-date-picker" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              
+                              <Label styleClass="form-field-label" text="قيمة المصروف:" GridPane.rowIndex="1" />
+                              <TextField fx:id="amountField" styleClass="modern-text-field" promptText="المبلغ بالجنيه" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              
+                              <Label styleClass="form-field-label" text="فئة المصروف:" GridPane.rowIndex="2" />
+                              <ComboBox fx:id="expenseCategoryComboBox" styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                              <Label styleClass="form-field-label" text="حساب الدفع:" GridPane.rowIndex="3" />
+                              <ComboBox fx:id="paymentAccountComboBox" styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              
+                              <Label styleClass="form-field-label" text="تفاصيل المصروف:" GridPane.rowIndex="4" />
+                              <TextArea fx:id="descriptionArea" styleClass="modern-text-area" promptText="اكتب وصفاً تفصيلياً للمصروف..." GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+      
+      <!-- أزرار العمليات -->
+      <HBox styleClass="form-dialog-footer">
+         <children>
+            <Button onAction="#handleCancel" styleClass="form-button-secondary" text="إلغاء" />
+            <Button onAction="#handleSave" styleClass="form-button-primary" text="حفظ المصروف" />
+         </children>
+      </HBox>
+      
+   </children>
+</VBox>

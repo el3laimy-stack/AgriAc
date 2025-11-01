@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox styleClass="form-dialog-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.ContactFormController">
+   <children>
+      
+      <!-- Header -->
+      <HBox styleClass="form-dialog-header">
+         <children>
+            <FontIcon iconLiteral="fa-user-plus" iconSize="28" styleClass="text-white" />
+            <Label styleClass="title-lg" text="بيانات جهة التعامل" />
+         </children>
+      </HBox>
+      
+      <!-- Content -->
+      <ScrollPane fitToWidth="true" styleClass="form-dialog-content" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox spacing="24">
+               <children>
+                  <!-- Basic Info Section -->
+                  <VBox styleClass="modern-form-section">
+                     <children>
+                        <HBox styleClass="form-section-header" alignment="CENTER_LEFT" spacing="8">
+                           <children>
+                              <FontIcon iconLiteral="fa-user" iconSize="18" />
+                              <Label text="البيانات الأساسية" />
+                           </children>
+                        </HBox>
+                        <GridPane styleClass="modern-form-grid">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="120.0" prefWidth="120.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="300.0" />
+                           </columnConstraints>
+                           <children>
+                              <Label styleClass="form-field-label" text="الاسم:" GridPane.rowIndex="0" />
+                              <TextField fx:id="nameField" styleClass="modern-text-field" promptText="أدخل الاسم الكامل" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              
+                              <Label styleClass="form-field-label" text="الهاتف:" GridPane.rowIndex="1" />
+                              <TextField fx:id="phoneField" styleClass="modern-text-field" promptText="01xxxxxxxxx" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              
+                              <Label styleClass="form-field-label" text="العنوان:" GridPane.rowIndex="2" />
+                              <TextField fx:id="addressField" styleClass="modern-text-field" promptText="العنوان التفصيلي" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Type Section -->
+                  <VBox styleClass="modern-form-section">
+                     <children>
+                        <HBox styleClass="form-section-header" alignment="CENTER_LEFT" spacing="8">
+                           <children>
+                              <FontIcon iconLiteral="fa-tags" iconSize="18" />
+                              <Label text="التصنيف" />
+                           </children>
+                        </HBox>
+                        <HBox spacing="30" alignment="CENTER_LEFT" styleClass="modern-form-grid">
+                           <children>
+                              <CheckBox fx:id="isCustomerCheckBox" mnemonicParsing="false" text="عميل" />
+                              <CheckBox fx:id="isSupplierCheckBox" mnemonicParsing="false" text="مورد" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+      
+      <!-- Footer -->
+      <HBox styleClass="form-dialog-footer">
+         <children>
+            <Button onAction="#handleCancel" styleClass="form-button-secondary" text="إلغاء" />
+            <Button onAction="#handleSave" styleClass="form-button-primary" text="حفظ" />
+         </children>
+      </HBox>
+      
+   </children>
+</VBox>

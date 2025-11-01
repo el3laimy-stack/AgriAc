@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.ProgressIndicator?>
+
+<ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.FinancialAccountManagementController">
+   <content>
+      <VBox spacing="20.0">
+         <children>
+            <VBox styleClass="card">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Button fx:id="addButton" onAction="#handleAddAccount" styleClass="button-success" text="إضافة">
+                           <graphic>
+                              <FontIcon iconLiteral="fa-plus" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="إضافة حساب مالي جديد" />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="editButton" onAction="#handleEditAccount" styleClass="button-warning" text="تعديل">
+                           <graphic>
+                              <FontIcon iconLiteral="fa-pencil" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="تعديل بيانات الحساب المحدد" />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="deleteButton" onAction="#handleDeleteAccount" styleClass="button-danger" text="حذف">
+                           <graphic>
+                              <FontIcon iconLiteral="fa-trash" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="حذف الحساب المحدد" />
+                           </tooltip>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <StackPane VBox.vgrow="ALWAYS">
+                     <children>
+                        <TableView fx:id="accountTable" prefHeight="450.0">
+                          <columns>
+                            <TableColumn fx:id="accountIdColumn" prefWidth="100.0" text="رقم الحساب" />
+                            <TableColumn fx:id="accountNameColumn" prefWidth="250.0" text="اسم الحساب" />
+                              <TableColumn fx:id="accountTypeColumn" prefWidth="150.0" text="نوع الحساب" />
+                              <TableColumn fx:id="openingBalanceColumn" prefWidth="150.0" text="الرصيد الافتتاحي" />
+                              <TableColumn fx:id="currentBalanceColumn" prefWidth="150.0" text="الرصيد الحالي" />
+                          </columns>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </TableView>
+                        <ProgressIndicator fx:id="progressIndicator" visible="false" />
+                     </children>
+                  </StackPane>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </content>
+</ScrollPane>

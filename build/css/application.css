@@ -1,0 +1,262 @@
+/* =================================================================
+   ملف الأنماط النهائي - تصميم احترافي (نسخة مصححة ونهائية)
+   ================================================================= */
+
+/* --- المتغيرات والألوان الأساسية --- */
+.root {
+    -fx-base: #f4f7f9; /* خلفية رمادية فاتحة جداً */
+    -fx-background: #FFFFFF;
+    -fx-control-inner-background: #FFFFFF;
+    -fx-accent: #3498DB; /* أزرق سماوي احترافي */
+    -fx-focus-color: -fx-accent;
+    
+    -fx-dark-blue: #2c3e50;
+    -fx-text-primary: #2c3e50;
+    -fx-text-secondary: #8493a5;
+    -fx-border-color-variable: #d0d7de; /* Darkened border color */
+    -fx-success: #008000;
+    -fx-danger: #FF0000;
+    -fx-warning: #f1c40f;
+    -fx-info: #3498db; /* نفس اللون الرئيسي */
+}
+
+/* --- الخطوط --- */
+.label, .button, .text-field, .combo-box, .table-view, .menu-item, .toggle-button, .titled-pane > .title {
+    -fx-font-family: "Cairo", "Segoe UI", sans-serif;
+}
+
+/* --- الهيكل الرئيسي --- */
+.main-container { -fx-background-color: -fx-base; }
+
+.header-bar {
+    -fx-background-color: white;
+    -fx-border-color: -fx-border-color-variable;
+    -fx-border-width: 0 0 1px 0;
+}
+.header-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+/* --- شريط التنقل الجانبي --- */
+.side-navigation-bar {
+    -fx-background-color: -fx-dark-blue;
+    -fx-padding: 15 10;
+    -fx-spacing: 10;
+}
+.side-navigation-bar .button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #bdc3c7; /* لون رمادي فاتح للنص */
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_RIGHT;
+    -fx-pref-width: 200px;
+    -fx-padding: 10 20;
+    -fx-border-width: 0;
+}
+.side-navigation-bar .button .font-icon {
+    -fx-fill: #bdc3c7;
+    -fx-font-size: 1.5em;
+}
+.side-navigation-bar .button:hover {
+    -fx-text-fill: white;
+    -fx-background-color: #34495e88;
+    -fx-background-radius: 8px;
+}
+.side-navigation-bar .button:hover .font-icon { -fx-fill: white; }
+.side-navigation-bar .button.active {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+    -fx-background-radius: 8px;
+}
+.side-navigation-bar .button.active .font-icon { -fx-fill: white; }
+
+
+/* --- البطاقات العامة --- */
+.card {
+    -fx-background-color: -fx-background;
+    -fx-border-width: 0;
+    -fx-background-radius: 8px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 15, 0, 0, 4);
+}
+
+/* --- بطاقات الإحصائيات في لوحة التحكم (معدلة) --- */
+.stat-card {
+    -fx-background-color: -fx-background;
+    -fx-background-radius: 8px;
+    -fx-padding: 15px 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 15, 0, 0, 4);
+    -fx-min-width: 240px; 
+    
+}
+
+.stat-label { -fx-font-size: 13px; -fx-text-fill: -fx-text-secondary; }
+.stat-value { -fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: -fx-text-primary; }
+
+.stat-icon-container {
+    -fx-padding: 15px;
+    -fx-background-radius: 50%;
+    -fx-alignment: center;
+}
+.stat-icon { -fx-font-size: 1.8em; -fx-fill: white; }
+
+.success-bg { -fx-background-color: -fx-success; }
+.danger-bg { -fx-background-color: -fx-danger; }
+.warning-bg { -fx-background-color: -fx-warning; }
+.accent-bg { -fx-background-color: -fx-accent; }
+
+
+/* --- الجداول --- */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+.table-view .column-header-background { -fx-background-color: transparent; }
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-border-color-variable;
+    -fx-border-width: 0 0 2px 0;
+    -fx-size: 40px;
+}
+.table-view .column-header .label {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-weight: bold;
+}
+.table-view .table-row-cell {
+    -fx-background-color: -fx-background;
+    -fx-border-color: -fx-border-color-variable;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 12px;
+}
+.table-view .table-row-cell:odd { -fx-background-color: #fcfdfe; }
+.table-view .table-row-cell:selected { -fx-background-color: #eaf2f8; }
+
+/* --- الأزرار وحقول الإدخال --- */
+.button {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 8 20;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+.button:hover { -fx-background-color: derive(-fx-accent, -10%); }
+.button.danger { -fx-background-color: -fx-danger; }
+.button.danger:hover { -fx-background-color: derive(-fx-danger, -10%); }
+.button.success { -fx-background-color: -fx-success; }
+.button.success:hover { -fx-background-color: derive(-fx-success, -10%); }
+.button.secondary { -fx-background-color: #e3e8ee; -fx-text-fill: -fx-text-secondary; }
+.button.secondary:hover { -fx-background-color: derive(#e3e8ee, -5%); }
+
+.text-field, .text-area, .combo-box, .date-picker {
+    -fx-background-color: #f4f7f9;
+    -fx-border-color: #dde3e9;
+    -fx-border-width: 1px;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-font-size: 14px;
+}
+.text-field:focused, .text-area:focused, .combo-box:focused, .date-picker:focused {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: -fx-accent;
+}
+
+/* تنسيقات خاصة لنصوص الأرباح والخسائر */
+.success-text {
+    -fx-text-fill: -fx-success;
+    -fx-font-weight: bold;
+}
+
+.danger-text {
+    -fx-text-fill: -fx-danger;
+    -fx-font-weight: bold;
+}
+
+/* --- Statement View --- */
+.statement-contact-name {
+    -fx-font-size: 24px;
+}
+
+.statement-header-row .statement-cell {
+    -fx-border-color: -fx-border-color-variable;
+    -fx-border-width: 0 1px 0 0;
+    -fx-padding: 4px;
+    -fx-font-size: 14px;
+}
+
+.statement-row .statement-cell {
+    -fx-border-color: -fx-border-color-variable;
+    -fx-padding: 4px;
+    -fx-alignment: CENTER_RIGHT;
+    -fx-font-size: 14px;
+}
+
+.balance-row .statement-cell {
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+}
+
+/* Remove border from the last cell */
+.statement-header-row .statement-cell:last-child,
+.statement-row .statement-cell:last-child {
+    -fx-border-width: 0;
+}
+
+.separator-line {
+    -fx-stroke: -fx-border-color-variable;
+}
+
+/* --- Accordion Navigation Styles --- */
+.side-navigation-bar .accordion {
+    -fx-background-color: transparent;
+}
+
+.side-navigation-bar .titled-pane {
+    -fx-background-color: transparent;
+    -fx-text-fill: #bdc3c7;
+}
+
+.side-navigation-bar .titled-pane > .title {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 10 20;
+}
+
+.side-navigation-bar .titled-pane > .title > .text {
+    -fx-fill: #bdc3c7;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.side-navigation-bar .titled-pane > .title > .arrow-button .arrow {
+    -fx-background-color: #bdc3c7;
+}
+
+.side-navigation-bar .titled-pane:hover > .title {
+    -fx-background-color: #34495e88;
+    -fx-background-radius: 8px;
+}
+
+.side-navigation-bar .titled-pane:hover > .title > .text {
+    -fx-fill: white;
+}
+
+.side-navigation-bar .titled-pane:hover > .title > .arrow-button .arrow {
+    -fx-background-color: white;
+}
+
+.side-navigation-bar .titled-pane > .content {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 15; /* Indent content */
+}
+
+.accordion-vbox {
+    -fx-spacing: 5;
+}
+
+.accordion-vbox .button {
+    -fx-pref-width: 185px; /* Slightly less width for indentation */
+}

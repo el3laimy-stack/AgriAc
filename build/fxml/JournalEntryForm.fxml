@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane fx:id="formGrid" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.JournalEntryFormController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+    </columnConstraints>
+    
+    <!-- Row 0: Transaction Type -->
+    <Label text="نوع المعاملة:" GridPane.rowIndex="0" />
+    <ComboBox fx:id="transactionTypeComboBox" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+    <!-- Row 1: Date -->
+    <Label text="التاريخ:" GridPane.rowIndex="1" />
+    <DatePicker fx:id="datePicker" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+    <!-- Row 2: Description -->
+    <Label text="البيان/الوصف:" GridPane.rowIndex="2" />
+    <TextArea fx:id="descriptionArea" prefHeight="60.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+    <!-- Row 3: Main Amount -->
+    <Label fx:id="amountLabel" text="المبلغ:" GridPane.rowIndex="3" />
+    <TextField fx:id="amountField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+    <!-- Row 4: From Account (Debit) -->
+    <Label fx:id="fromAccountLabel" text="من حساب (مدين):" GridPane.rowIndex="4" />
+    <ComboBox fx:id="fromAccountComboBox" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+    <!-- Row 5: To Account (Credit) -->
+    <Label fx:id="toAccountLabel" text="إلى حساب (دائن):" GridPane.rowIndex="5" />
+    <ComboBox fx:id="toAccountComboBox" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+    <!-- These fields will be managed (shown/hidden) by the controller -->
+    <!-- Row 6: Contact -->
+    <Label fx:id="contactLabel" text="جهة التعامل:" visible="false" GridPane.rowIndex="6" />
+    <ComboBox fx:id="contactComboBox" prefWidth="250.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+    <!-- Row 7: Paid Amount -->
+    <Label fx:id="paidAmountLabel" text="المبلغ المدفوع:" visible="false" GridPane.rowIndex="7" />
+    <TextField fx:id="paidAmountField" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
+</GridPane>

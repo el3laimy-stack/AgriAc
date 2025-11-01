@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.ProgressIndicator?>
+
+<ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.InventoryController">
+   <content>
+      <VBox spacing="20.0" style="-fx-background-color: transparent;">
+         <children>
+            <VBox styleClass="card">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Button fx:id="addAdjustmentButton" mnemonicParsing="false" onAction="#handleAddAdjustment" text="إضافة تسوية مخزون" />
+                        <Button fx:id="refreshButton" mnemonicParsing="false" text="تحديث" />
+                     </children>
+                  </HBox>
+                  <StackPane VBox.vgrow="ALWAYS">
+                     <children>
+                        <TableView fx:id="inventoryTable" prefHeight="450.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="cropNameColumn" prefWidth="200.0" text="اسم المحصول" />
+                            <TableColumn fx:id="currentStockColumn" prefWidth="150.0" text="المخزون الحالي" />
+                              <TableColumn fx:id="avgCostColumn" prefWidth="150.0" text="متوسط التكلفة / كجم" />
+                              <TableColumn fx:id="inventoryValueColumn" prefWidth="200.0" text="إجمالي قيمة المخزون" />
+                          </columns>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </TableView>
+                        <ProgressIndicator fx:id="progressIndicator" visible="false" />
+                     </children>
+                  </StackPane>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: -fx-border-color-variable; -fx-border-width: 1 0 0 0; -fx-padding: 10 0 0 0;">
+                     <children>
+                        <Label fx:id="totalInventoryValueLabel" style="-fx-font-weight: bold; -fx-font-size: 16px;" text="إجمالي قيمة المخزون: 0.00" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </content>
+</ScrollPane>

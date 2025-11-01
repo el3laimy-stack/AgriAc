@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox styleClass="window-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.CropManagementController">
+   <children>
+      
+      <!-- رأس النافذة -->
+      <HBox styleClass="report-header" alignment="CENTER_LEFT">
+         <children>
+            <FontIcon iconLiteral="fa-leaf" iconSize="24" styleClass="text-success" />
+            <Label styleClass="title-lg" text="إدارة المحاصيل الزراعية" />
+         </children>
+      </HBox>
+      
+      <!-- جدول المحاصيل -->
+      <VBox styleClass="card" VBox.vgrow="ALWAYS">
+         <children>
+            <StackPane VBox.vgrow="ALWAYS">
+               <children>
+                  <TableView fx:id="cropTable">
+                    <columns>
+                      <TableColumn fx:id="cropIdColumn" prefWidth="100.0" text="رقم المحصول" />
+                      <TableColumn fx:id="cropNameColumn" prefWidth="300.0" text="اسم المحصول" />
+                        <TableColumn fx:id="pricingUnitsColumn" prefWidth="350.0" text="وحدات التسعير المسموحة" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <ProgressIndicator fx:id="progressIndicator" visible="false" />
+               </children>
+            </StackPane>
+         </children>
+      </VBox>
+      
+      <!-- أزرار العمليات -->
+      <VBox styleClass="card">
+         <children>
+            <HBox alignment="CENTER_LEFT" styleClass="spacing-md">
+               <children>
+                  <Button fx:id="addButton" onAction="#handleAddCrop" styleClass="success" text="إضافة">
+                     <graphic>
+                        <FontIcon iconLiteral="fa-plus" />
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="إضافة محصول جديد" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="editButton" onAction="#handleEditCrop" styleClass="warning" text="تعديل">
+                     <graphic>
+                        <FontIcon iconLiteral="fa-pencil" />
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="تعديل بيانات المحصول المحدد" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="deleteButton" onAction="#handleDeleteCrop" styleClass="danger" text="حذف">
+                     <graphic>
+                        <FontIcon iconLiteral="fa-trash" />
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="حذف المحصول المحدد" />
+                     </tooltip>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      
+   </children>
+</VBox>

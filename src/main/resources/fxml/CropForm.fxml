@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox styleClass="form-dialog-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.CropFormController">
+   <children>
+      
+      <!-- Header -->
+      <HBox styleClass="form-dialog-header">
+         <children>
+            <FontIcon iconLiteral="fa-leaf" iconSize="28" styleClass="text-white" />
+            <Label styleClass="title-lg" text="بيانات المحصول" />
+         </children>
+      </HBox>
+      
+      <!-- Content -->
+      <ScrollPane fitToWidth="true" styleClass="form-dialog-content" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox spacing="24">
+               <children>
+                  <!-- Basic Info Section -->
+                  <VBox styleClass="modern-form-section">
+                     <children>
+                        <HBox styleClass="form-section-header" alignment="CENTER_LEFT" spacing="8">
+                           <children>
+                              <FontIcon iconLiteral="fa-info-circle" iconSize="18" />
+                              <Label text="المعلومات الأساسية" />
+                           </children>
+                        </HBox>
+                        <GridPane styleClass="modern-form-grid">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="120.0" prefWidth="120.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="300.0" />
+                           </columnConstraints>
+                           <children>
+                              <Label styleClass="form-field-label" text="اسم المحصول:" GridPane.rowIndex="0" />
+                              <TextField fx:id="cropNameField" styleClass="modern-text-field" promptText="مثال: طماطم" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Units Section -->
+                  <VBox styleClass="modern-form-section">
+                     <children>
+                        <HBox styleClass="form-section-header" alignment="CENTER_LEFT" spacing="8">
+                           <children>
+                              <FontIcon iconLiteral="fa-balance-scale" iconSize="18" />
+                              <Label text="وحدات التسعير" />
+                              <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Button onAction="#handleAddUnit" text="إضافة وحدة" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <TableView fx:id="unitsTable" editable="true" prefHeight="200.0">
+                           <columns>
+                              <TableColumn fx:id="unitNameColumn" prefWidth="200.0" text="اسم الوحدة (مثال: أردب)" />
+                              <TableColumn fx:id="conversionFactorColumn" prefWidth="230.0" text="تساوي كم كيلو جرام؟ (مثال: 150.0)" />
+                              <TableColumn fx:id="actionsColumn" prefWidth="100.0" text="حذف" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+      
+      <!-- Footer -->
+      <HBox styleClass="form-dialog-footer">
+         <children>
+            <Button onAction="#handleCancel" styleClass="form-button-secondary" text="إلغاء" />
+            <Button onAction="#handleSave" styleClass="form-button-primary" text="حفظ" />
+         </children>
+      </HBox>
+      
+   </children>
+</VBox>

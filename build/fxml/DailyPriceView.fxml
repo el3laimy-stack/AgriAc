@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.DailyPriceController">
+   <top>
+      <VBox spacing="10.0">
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <children>
+            <!-- عنوان الصفحة -->
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <FontIcon iconLiteral="fa-line-chart" iconSize="24" />
+                  <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="إدارة الأسعار اليومية" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <ProgressIndicator fx:id="progressIndicator" prefHeight="20.0" prefWidth="20.0" visible="false" />
+               </children>
+            </HBox>
+            
+            <!-- Ultra-Compact Filter Bar for Daily Prices -->
+            <HBox styleClass="ultra-compact-filter-bar" alignment="CENTER_LEFT" spacing="12">
+               <children>
+                  <!-- Filter Icon & Title -->
+                  <HBox alignment="CENTER_LEFT" spacing="8">
+                     <children>
+                        <FontIcon iconLiteral="fa-line-chart" iconSize="16" styleClass="text-primary" />
+                        <Label styleClass="filter-title-mini" text="فلترة:" />
+                     </children>
+                  </HBox>
+                  
+                  <!-- Crop Filter -->
+                  <HBox spacing="6" alignment="CENTER_LEFT">
+                     <children>
+                        <Label styleClass="filter-label-compact" text="المحصول:" />
+                        <ComboBox fx:id="filterCropComboBox" styleClass="mini-combo-box" prefWidth="120" promptText="الكل" />
+                     </children>
+                  </HBox>
+                  
+                  <!-- Date Range -->
+                  <HBox spacing="6" alignment="CENTER_LEFT">
+                     <children>
+                        <DatePicker fx:id="fromDatePicker" styleClass="mini-date-picker" prefWidth="100" promptText="من" />
+                        <Label text="→" styleClass="date-separator" />
+                        <DatePicker fx:id="toDatePicker" styleClass="mini-date-picker" prefWidth="100" promptText="إلى" />
+                     </children>
+                  </HBox>
+                  
+                  <Region HBox.hgrow="ALWAYS" />
+                  
+                  <!-- Action Buttons -->
+                  <HBox spacing="4">
+                     <children>
+                        <Button fx:id="filterButton" contentDisplay="LEFT" onAction="#handleFilter" styleClass="mini-apply-btn" text="بحث">
+                           <graphic><FontIcon iconLiteral="fa-search" iconSize="10" /></graphic>
+                        </Button>
+                        <Button fx:id="clearFilterButton" mnemonicParsing="false" onAction="#handleClearFilter" styleClass="mini-clear-btn">
+                           <graphic><FontIcon iconLiteral="fa-eraser" iconSize="10" /></graphic>
+                           <tooltip><Tooltip text="مسح الفلاتر" /></tooltip>
+                        </Button>
+                        <Button fx:id="autoUpdateButton" contentDisplay="LEFT" onAction="#handleAutoUpdate" styleClass="mini-apply-btn" text="تحديث">
+                           <graphic><FontIcon iconLiteral="fa-refresh" iconSize="10" /></graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+
+            <!-- الإحصائيات السريعة -->
+            <HBox spacing="20.0" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 5;">
+               <children>
+                  <VBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #666;" text="متوسط السعر" />
+                        <Label fx:id="avgPriceLabel" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="0.00" />
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" />
+                  <VBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #666;" text="أقل سعر" />
+                        <Label fx:id="minPriceLabel" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;" text="0.00" />
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" />
+                  <VBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #666;" text="أعلى سعر" />
+                        <Label fx:id="maxPriceLabel" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #27ae60;" text="0.00" />
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" />
+                  <VBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #666;" text="التقلبات" />
+                        <Label fx:id="volatilityLabel" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #f39c12;" text="0.00%" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+
+   <center>
+      <SplitPane dividerPositions="0.7" orientation="HORIZONTAL">
+         <items>
+            <!-- جدول الأسعار -->
+            <VBox spacing="10.0">
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="الأسعار اليومية" />
+                  <TableView fx:id="pricesTable" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="cropNameColumn" prefWidth="120.0" text="المحصول" />
+                        <TableColumn fx:id="dateColumn" prefWidth="100.0" text="التاريخ" />
+                        <TableColumn fx:id="openingPriceColumn" prefWidth="80.0" text="الافتتاح" />
+                        <TableColumn fx:id="highPriceColumn" prefWidth="80.0" text="الأعلى" />
+                        <TableColumn fx:id="lowPriceColumn" prefWidth="80.0" text="الأقل" />
+                        <TableColumn fx:id="closingPriceColumn" prefWidth="80.0" text="الإغلاق" />
+                        <TableColumn fx:id="changeColumn" prefWidth="70.0" text="التغيير" />
+                        <TableColumn fx:id="changePercentColumn" prefWidth="70.0" text="النسبة%" />
+                        <TableColumn fx:id="conditionColumn" prefWidth="100.0" text="حالة السوق" />
+                     </columns>
+                  </TableView>
+               </children>
+            </VBox>
+
+            <!-- نموذج الإدخال -->
+            <VBox spacing="15.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+               </padding>
+               <children>
+                  <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="إضافة/تعديل سعر يومي" />
+                  
+                  <GridPane fx:id="inputForm" hgap="10.0" vgap="15.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
+                     <children>
+                        <!-- المحصول -->
+                        <Label text="المحصول:" GridPane.rowIndex="0" />
+                        <ComboBox fx:id="cropComboBox" maxWidth="1.7976931348623157E308" promptText="اختر المحصول" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                        
+                        <!-- التاريخ -->
+                        <Label text="التاريخ:" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="datePicker" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        
+                        <!-- سعر الافتتاح -->
+                        <Label text="الافتتاح:" GridPane.rowIndex="2" />
+                        <TextField fx:id="openingPriceField" promptText="سعر الافتتاح" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        
+                        <!-- أعلى سعر -->
+                        <Label text="أعلى سعر:" GridPane.rowIndex="3" />
+                        <TextField fx:id="highPriceField" promptText="أعلى سعر في اليوم" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        
+                        <!-- أقل سعر -->
+                        <Label text="أقل سعر:" GridPane.rowIndex="4" />
+                        <TextField fx:id="lowPriceField" promptText="أقل سعر في اليوم" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        
+                        <!-- سعر الإغلاق -->
+                        <Label text="الإغلاق:" GridPane.rowIndex="5" />
+                        <TextField fx:id="closingPriceField" promptText="سعر الإغلاق" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        
+                        <!-- حجم التداول -->
+                        <Label text="الحجم (كجم):" GridPane.rowIndex="6" />
+                        <TextField fx:id="volumeField" promptText="حجم التداول بالكيلوجرام" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        
+                        <!-- ملاحظات -->
+                        <Label text="ملاحظات:" GridPane.rowIndex="7" />
+                        <TextArea fx:id="notesArea" maxHeight="60.0" prefHeight="60.0" promptText="ملاحظات إضافية..." GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                     </children>
+                  </GridPane>
+
+                  <!-- أزرار التحكم -->
+                  <VBox spacing="10.0">
+                     <children>
+                        <Button fx:id="addButton" maxWidth="1.7976931348623157E308" onAction="#handleAdd" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="إضافة">
+                           <graphic>
+                              <FontIcon iconLiteral="fa-plus" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="updateButton" disable="true" maxWidth="1.7976931348623157E308" onAction="#handleUpdate" style="-fx-background-color: #f39c12; -fx-text-fill: white;" text="تحديث">
+                           <graphic>
+                              <FontIcon iconLiteral="fa-edit" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="deleteButton" disable="true" maxWidth="1.7976931348623157E308" onAction="#handleDelete" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="حذف">
+                           <graphic>
+                              <FontIcon iconLiteral="fa-trash" />
+                           </graphic>
+                        </Button>
+                        <Separator />
+                        <Button fx:id="refreshButton" maxWidth="1.7976931348623157E308" onAction="#handleRefresh" text="تحديث البيانات">
+                           <graphic>
+                              <FontIcon iconLiteral="fa-refresh" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </items>
+      </SplitPane>
+   </center>
+</BorderPane>
