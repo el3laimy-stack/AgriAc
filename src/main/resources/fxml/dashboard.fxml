@@ -15,70 +15,57 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<StackPane styleClass="dashboard-background" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.DashboardController">
-   <children>
-      <VBox fx:id="animatedBackground" />
-      <VBox spacing="20.0" styleClass="dashboard-main-container">
-         <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </padding>
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.DashboardController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+    <children>
+      <!-- KPIs Row -->
+      <GridPane fx:id="kpiContainer" hgap="20" vgap="20">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+      </GridPane>
+
+      <!-- Main Content Area -->
+      <HBox spacing="20.0" VBox.vgrow="ALWAYS">
          <children>
-            <!-- Header -->
-            <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <!-- Left Column (Main Chart) -->
+            <VBox styleClass="card" spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
-                  <FontIcon iconLiteral="fa-dashboard" iconSize="28" styleClass="text-white" />
-                  <Label styleClass="title-lg, text-white" text="لوحة القيادة الذكية" />
+                  <Label styleClass="title-md" text="التدفق النقدي (آخر 6 أشهر)" />
+                  <BarChart fx:id="cashFlowChart" animated="true" legendVisible="true" VBox.vgrow="ALWAYS">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </BarChart>
                </children>
-            </HBox>
+            </VBox>
 
-            <!-- KPIs Row -->
-            <GridPane fx:id="kpiContainer" hgap="20" vgap="20">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-            </GridPane>
-
-            <!-- Main Content Area -->
-            <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+            <!-- Right Column (Secondary Info) -->
+            <VBox spacing="20.0" maxWidth="400" minWidth="400">
                <children>
-                  <!-- Left Column (Main Chart) -->
-                  <VBox styleClass="glass-pane" spacing="10.0" HBox.hgrow="ALWAYS">
+                  <VBox styleClass="card" spacing="10.0">
                      <children>
-                        <Label styleClass="title-md, text-white" text="التدفق النقدي (آخر 6 أشهر)" />
-                        <BarChart fx:id="cashFlowChart" animated="true" legendVisible="true" VBox.vgrow="ALWAYS">
-                           <xAxis>
-                              <CategoryAxis side="BOTTOM" />
-                           </xAxis>
-                           <yAxis>
-                              <NumberAxis side="LEFT" />
-                           </yAxis>
-                        </BarChart>
+                        <Label styleClass="title-md" text="توزيع المصروفات" />
+                        <StackPane fx:id="doughnutChartContainer" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
-
-                  <!-- Right Column (Secondary Info) -->
-                  <VBox spacing="20.0" maxWidth="400" minWidth="400">
+                  <VBox styleClass="card" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <VBox styleClass="glass-pane" spacing="10.0">
-                           <children>
-                              <Label styleClass="title-md, text-white" text="توزيع المصروفات" />
-                              <StackPane fx:id="doughnutChartContainer" VBox.vgrow="ALWAYS" />
-                           </children>
-                        </VBox>
-                        <VBox styleClass="glass-pane" spacing="10.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <Label styleClass="title-md, text-white" text="آخر الحركات" />
-                              <ListView fx:id="recentActivityListView" styleClass="recent-activity-list" VBox.vgrow="ALWAYS" />
-                           </children>
-                        </VBox>
+                        <Label styleClass="title-md" text="آخر الحركات" />
+                        <ListView fx:id="recentActivityListView" styleClass="recent-activity-list" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
                </children>
-            </HBox>
+            </VBox>
          </children>
-      </VBox>
+      </HBox>
    </children>
-</StackPane>
+</VBox>

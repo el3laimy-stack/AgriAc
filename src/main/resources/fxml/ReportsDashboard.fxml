@@ -10,29 +10,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<ScrollPane fitToWidth="true" styleClass="main-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.ReportsDashboardController">
+<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.ReportsDashboardController">
    <content>
       <VBox spacing="20.0">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <!-- Header -->
-            <HBox alignment="CENTER_LEFT" spacing="10.0">
-               <children>
-                  <FontIcon iconLiteral="fa-bar-chart" iconSize="28" styleClass="text-primary" />
-                  <Label styleClass="title-lg" text="مركز التقارير" />
-               </children>
-            </HBox>
-
             <!-- Report Cards -->
             <FlowPane fx:id="reportsFlowPane" hgap="20" vgap="20">
                <children>
                   <!-- Income Statement Card -->
-                  <VBox styleClass="report-card">
+                  <VBox styleClass="card" spacing="15.0">
                      <children>
-                        <Label styleClass="report-card-title" text="قائمة الدخل" />
-                        <Label styleClass="report-card-description" text="عرض الإيرادات والمصروفات وصافي الربح لفترة محددة." />
+                        <Label styleClass="title-md" text="قائمة الدخل" />
+                        <Label styleClass="text-secondary" text="عرض الإيرادات والمصروفات وصافي الربح لفترة محددة." />
                         <HBox alignment="CENTER_LEFT" spacing="10">
                            <children>
                               <DatePicker fx:id="incomeStmtFromDate" promptText="من تاريخ" />
@@ -44,10 +36,10 @@
                   </VBox>
 
                   <!-- Balance Sheet Card -->
-                  <VBox styleClass="report-card">
+                  <VBox styleClass="card" spacing="15.0">
                      <children>
-                        <Label styleClass="report-card-title" text="الميزانية العمومية" />
-                        <Label styleClass="report-card-description" text="عرض الأصول والخصوم وحقوق الملكية في تاريخ محدد." />
+                        <Label styleClass="title-md" text="الميزانية العمومية" />
+                        <Label styleClass="text-secondary" text="عرض الأصول والخصوم وحقوق الملكية في تاريخ محدد." />
                         <HBox alignment="CENTER_LEFT" spacing="10">
                            <children>
                               <DatePicker fx:id="balanceSheetDate" promptText="في تاريخ" />
@@ -58,10 +50,10 @@
                   </VBox>
 
                   <!-- General Ledger Card -->
-                  <VBox styleClass="report-card">
+                  <VBox styleClass="card" spacing="15.0">
                      <children>
-                        <Label styleClass="report-card-title" text="دفتر الأستاذ العام" />
-                        <Label styleClass="report-card-description" text="عرض جميع الحركات المالية لجميع الحسابات." />
+                        <Label styleClass="title-md" text="دفتر الأستاذ العام" />
+                        <Label styleClass="text-secondary" text="عرض جميع الحركات المالية لجميع الحسابات." />
                         <HBox alignment="CENTER_LEFT" spacing="10">
                            <children>
                               <DatePicker fx:id="generalLedgerFromDate" promptText="من تاريخ" />
