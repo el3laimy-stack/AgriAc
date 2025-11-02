@@ -36,7 +36,7 @@ public class ImprovedAccountingApp extends Application {
             Scene scene = new Scene(root, 1400, 900);
             
             // تطبيق ملف الأنماط
-            scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/css/new-theme.css").toExternalForm());
 
             // إعداد النافذة الرئيسية
             primaryStage.setTitle("برنامج إدارة حسابات المحاصيل الزراعية - الإصدار المحسن");

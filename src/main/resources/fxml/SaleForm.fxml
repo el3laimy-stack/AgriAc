@@ -6,150 +6,128 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox prefHeight="750.0" styleClass="form-dialog-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.SaleFormController">
+<VBox prefHeight="750.0" styleClass="form-container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.SaleFormController">
    <children>
       
       <!-- Header -->
-      <HBox styleClass="form-dialog-header">
+      <HBox styleClass="form-header">
          <children>
-            <FontIcon iconLiteral="fa-magic" iconSize="28" styleClass="text-white" />
-            <Label styleClass="title-lg" text="المساعد الذكي لإنشاء فاتورة بيع" />
+            <FontIcon iconLiteral="fa-magic" iconSize="24" />
+            <Label styleClass="title-md" text="إنشاء فاتورة بيع جديدة" />
          </children>
       </HBox>
       
       <!-- Stepper -->
-      <HBox fx:id="stepper" styleClass="stepper-container" alignment="CENTER">
+      <HBox fx:id="stepper" styleClass="stepper" alignment="CENTER">
          <children>
-            <VBox fx:id="step1Indicator" styleClass="stepper-step, active" alignment="CENTER">
+            <VBox fx:id="step1Indicator" styleClass="step, active" alignment="CENTER">
                <children>
-                  <Label styleClass="stepper-step-number" text="1" />
-                  <Label styleClass="stepper-step-label" text="المعلومات الأساسية" />
+                  <Label styleClass="step-number" text="1" />
+                  <Label styleClass="step-label" text="المعلومات الأساسية" />
                </children>
             </VBox>
-            <Region styleClass="stepper-separator" HBox.hgrow="ALWAYS" />
-            <VBox fx:id="step2Indicator" styleClass="stepper-step" alignment="CENTER">
+            <Region styleClass="step-separator" HBox.hgrow="ALWAYS" />
+            <VBox fx:id="step2Indicator" styleClass="step" alignment="CENTER">
                <children>
-                  <Label styleClass="stepper-step-number" text="2" />
-                  <Label styleClass="stepper-step-label" text="الكمية والتسعير" />
+                  <Label styleClass="step-number" text="2" />
+                  <Label styleClass="step-label" text="الكمية والتسعير" />
                </children>
             </VBox>
-            <Region styleClass="stepper-separator" HBox.hgrow="ALWAYS" />
-            <VBox fx:id="step3Indicator" styleClass="stepper-step" alignment="CENTER">
+            <Region styleClass="step-separator" HBox.hgrow="ALWAYS" />
+            <VBox fx:id="step3Indicator" styleClass="step" alignment="CENTER">
                <children>
-                  <Label styleClass="stepper-step-number" text="3" />
-                  <Label styleClass="stepper-step-label" text="الدفع والمراجعة" />
+                  <Label styleClass="step-number" text="3" />
+                  <Label styleClass="step-label" text="الدفع والمراجعة" />
                </children>
             </VBox>
          </children>
       </HBox>
       
       <!-- Content Area -->
-      <StackPane fx:id="stepContainer" VBox.vgrow="ALWAYS">
+      <StackPane fx:id="stepContainer" VBox.vgrow="ALWAYS" style="-fx-padding: 30px;">
          
          <!-- Step 1: Basic Info -->
-         <VBox fx:id="step1Pane" styleClass="form-step-pane" spacing="20">
-            <padding><Insets top="20" right="40" bottom="20" left="40" /></padding>
+         <VBox fx:id="step1Pane" styleClass="form-step" spacing="25">
             <children>
-               <Label styleClass="form-section-header-label" text="أولاً: أدخل البيانات الأساسية للفاتورة" />
-               <GridPane styleClass="modern-form-grid">
-                  <columnConstraints>
-                     <ColumnConstraints hgrow="NEVER" minWidth="150.0" prefWidth="150.0" />
-                     <ColumnConstraints hgrow="ALWAYS" minWidth="300.0" />
-                  </columnConstraints>
+               <Label styleClass="form-section-title" text="البيانات الأساسية للفاتورة" />
+               <GridPane styleClass="form-grid">
                   <children>
-                     <Label styleClass="form-field-label" text="تاريخ البيع:" GridPane.rowIndex="0" />
-                     <DatePicker fx:id="saleDatePicker" styleClass="modern-date-picker" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                     <Label text="تاريخ البيع:" GridPane.rowIndex="0" />
+                     <DatePicker fx:id="saleDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                      
-                     <Label styleClass="form-field-label" text="العميل:" GridPane.rowIndex="1" />
-                     <ComboBox fx:id="customerComboBox" styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     <Label text="العميل:" GridPane.rowIndex="1" />
+                     <ComboBox fx:id="customerComboBox" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      
-                     <Label styleClass="form-field-label" text="المحصول:" GridPane.rowIndex="2" />
+                     <Label text="المحصول:" GridPane.rowIndex="2" />
                      <HBox alignment="CENTER_LEFT" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
                         <children>
-                           <ComboBox fx:id="cropComboBox" styleClass="modern-combo-box" HBox.hgrow="ALWAYS" />
-                           <Label fx:id="currentStockLabel" styleClass="form-field-info-label" text="المخزون: --" />
+                           <ComboBox fx:id="cropComboBox" HBox.hgrow="ALWAYS" />
+                           <Label fx:id="currentStockLabel" styleClass="text-secondary" text="المخزون: --" />
                         </children>
                      </HBox>
                      
-                     <Label styleClass="form-field-label" text="رقم الفاتورة:" GridPane.rowIndex="3" />
-                     <TextField fx:id="invoiceNumberField" styleClass="modern-text-field" promptText="سيتم إنشاؤه تلقائياً" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     <Label text="رقم الفاتورة:" GridPane.rowIndex="3" />
+                     <TextField fx:id="invoiceNumberField" promptText="سيتم إنشاؤه تلقائياً" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   </children>
                </GridPane>
             </children>
          </VBox>
          
          <!-- Step 2: Quantity & Pricing -->
-         <VBox fx:id="step2Pane" styleClass="form-step-pane" spacing="20" visible="false">
-            <padding><Insets top="20" right="40" bottom="20" left="40" /></padding>
+         <VBox fx:id="step2Pane" styleClass="form-step" spacing="25" visible="false">
             <children>
-               <Label styleClass="form-section-header-label" text="ثانياً: حدد الكمية والسعر" />
-               <GridPane styleClass="modern-form-grid">
-                  <columnConstraints>
-                     <ColumnConstraints hgrow="NEVER" minWidth="150.0" prefWidth="150.0" />
-                     <ColumnConstraints hgrow="ALWAYS" minWidth="300.0" />
-                  </columnConstraints>
+               <Label styleClass="form-section-title" text="الكمية والسعر" />
+               <GridPane styleClass="form-grid">
                   <children>
-                     <Label styleClass="form-field-label" text="الكمية (كجم):" GridPane.rowIndex="0" />
-                     <TextField fx:id="quantityKgField" styleClass="modern-text-field" promptText="الوزن بالكيلو" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                     <Label text="الكمية (كجم):" GridPane.rowIndex="0" />
+                     <TextField fx:id="quantityKgField" promptText="الوزن بالكيلو" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                      
-                     <Label styleClass="form-field-label" text="وحدة التسعير:" GridPane.rowIndex="1" />
-                     <ComboBox fx:id="pricingUnitComboBox" styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     <Label text="وحدة التسعير:" GridPane.rowIndex="1" />
+                     <ComboBox fx:id="pricingUnitComboBox" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      
-                     <Label styleClass="form-field-label" text="سعر الوحدة:" GridPane.rowIndex="2" />
-                     <TextField fx:id="unitPriceField" styleClass="modern-text-field" promptText="السعر لكل وحدة" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <Label text="سعر الوحدة:" GridPane.rowIndex="2" />
+                     <TextField fx:id="unitPriceField" promptText="السعر لكل وحدة" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      
-                     <Label styleClass="form-field-label analysis-label" text="المبلغ الإجمالي:" GridPane.rowIndex="3" />
-                     <TextField fx:id="totalAmountField" styleClass="modern-text-field analysis-metric" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     <Label styleClass="text-primary" text="المبلغ الإجمالي:" GridPane.rowIndex="3" />
+                     <TextField fx:id="totalAmountField" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   </children>
                </GridPane>
             </children>
          </VBox>
          
          <!-- Step 3: Payment & Review -->
-         <VBox fx:id="step3Pane" styleClass="form-step-pane" spacing="20" visible="false">
-            <padding><Insets top="20" right="40" bottom="20" left="40" /></padding>
+         <VBox fx:id="step3Pane" styleClass="form-step" spacing="25" visible="false">
             <children>
-               <Label styleClass="form-section-header-label" text="ثالثاً: تفاصيل الدفع والمراجعة النهائية" />
-               <GridPane styleClass="modern-form-grid">
-                  <columnConstraints>
-                     <ColumnConstraints hgrow="NEVER" minWidth="150.0" prefWidth="150.0" />
-                     <ColumnConstraints hgrow="ALWAYS" minWidth="300.0" />
-                  </columnConstraints>
+               <Label styleClass="form-section-title" text="تفاصيل الدفع والمراجعة" />
+               <GridPane styleClass="form-grid">
                   <children>
-                     <Label styleClass="form-field-label" text="المبلغ المقبوض:" GridPane.rowIndex="0" />
-                     <TextField fx:id="amountReceivedField" styleClass="modern-text-field" text="0.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                     <Label text="المبلغ المقبوض:" GridPane.rowIndex="0" />
+                     <TextField fx:id="amountReceivedField" text="0.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                      
-                     <Label styleClass="form-field-label" text="طريقة التحصيل:" GridPane.rowIndex="1" />
+                     <Label text="طريقة التحصيل:" GridPane.rowIndex="1" />
                      <HBox spacing="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
                         <children>
-                           <RadioButton fx:id="cashPaymentRadio" styleClass="modern-radio-button" text="تحصيل نقدي" />
-                           <RadioButton fx:id="bankPaymentRadio" styleClass="modern-radio-button" text="تحصيل بنكي" />
+                           <RadioButton fx:id="cashPaymentRadio" text="تحصيل نقدي" />
+                           <RadioButton fx:id="bankPaymentRadio" text="تحصيل بنكي" />
                         </children>
                      </HBox>
                      
-                     <Label fx:id="bankAccountLabel" styleClass="form-field-label" text="الحساب البنكي:" GridPane.rowIndex="2" />
-                     <ComboBox fx:id="bankAccountComboBox" styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <Label fx:id="bankAccountLabel" text="الحساب البنكي:" GridPane.rowIndex="2" />
+                     <ComboBox fx:id="bankAccountComboBox" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   </children>
                </GridPane>
                <VBox styleClass="summary-card" spacing="10">
                   <children>
-                     <Label styleClass="summary-title" text="ملخص الفاتورة" />
-                     <GridPane hgap="10" vgap="5">
-                        <columnConstraints>
-                           <ColumnConstraints hgrow="NEVER" prefWidth="120.0" />
-                           <ColumnConstraints hgrow="ALWAYS" />
-                        </columnConstraints>
+                     <Label styleClass="title-sm" text="ملخص الفاتورة" />
+                     <GridPane hgap="10" vgap="8">
                         <children>
                            <Label text="العميل:" GridPane.rowIndex="0" />
                            <Label fx:id="summaryCustomerLabel" styleClass="summary-value" text="-" GridPane.columnIndex="1" GridPane.rowIndex="0" />
@@ -158,7 +136,7 @@
                            <Label text="الكمية:" GridPane.rowIndex="2" />
                            <Label fx:id="summaryQuantityLabel" styleClass="summary-value" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            <Label text="الإجمالي:" GridPane.rowIndex="3" />
-                           <Label fx:id="summaryTotalLabel" styleClass="summary-value, total" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           <Label fx:id="summaryTotalLabel" styleClass="summary-total" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         </children>
                      </GridPane>
                   </children>
@@ -169,12 +147,12 @@
       </StackPane>
       
       <!-- Navigation Footer -->
-      <HBox styleClass="form-dialog-footer" alignment="CENTER">
+      <HBox styleClass="form-footer" alignment="CENTER">
          <children>
-            <Button fx:id="previousButton" onAction="#handlePrevious" styleClass="form-button-secondary" text="السابق" visible="false" />
+            <Button fx:id="previousButton" onAction="#handlePrevious" styleClass="secondary" text="السابق" visible="false" />
             <Region HBox.hgrow="ALWAYS" />
-            <Button fx:id="nextButton" onAction="#handleNext" styleClass="form-button-primary" text="التالي" />
-            <Button fx:id="saveButton" onAction="#handleSave" styleClass="form-button-primary, success" text="حفظ الفاتورة" visible="false" />
+            <Button fx:id="nextButton" onAction="#handleNext" text="التالي" />
+            <Button fx:id="saveButton" onAction="#handleSave" styleClass="success" text="حفظ الفاتورة" visible="false" />
          </children>
       </HBox>
       
