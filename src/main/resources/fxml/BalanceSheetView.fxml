@@ -19,7 +19,7 @@
 <?import javafx.scene.control.ProgressIndicator?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox styleClass="report-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.BalanceSheetController">
+<VBox styleClass="report-container" stylesheets="@../css/new-theme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.BalanceSheetController">
    <children>
       
       <!-- رأس التقرير -->

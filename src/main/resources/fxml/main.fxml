@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane fx:id="mainBorderPane" prefHeight="800.0" prefWidth="1280.0" styleClass="main-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.MainController">
+<BorderPane fx:id="mainBorderPane" prefHeight="800.0" prefWidth="1280.0" styleClass="main-container" stylesheets="@../css/new-theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.MainController">
    <right>
       <VBox fx:id="sideNavigationBar" alignment="TOP_CENTER" prefWidth="220.0" styleClass="side-navigation-bar">
          <children>

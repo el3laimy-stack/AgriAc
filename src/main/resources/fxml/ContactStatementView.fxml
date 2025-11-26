@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox styleClass="report-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.ContactStatementController" nodeOrientation="RIGHT_TO_LEFT">
+<VBox styleClass="report-container" stylesheets="@../css/new-theme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.ContactStatementController" nodeOrientation="RIGHT_TO_LEFT">
    <children>
       <HBox alignment="CENTER" styleClass="report-header">
          <children>
