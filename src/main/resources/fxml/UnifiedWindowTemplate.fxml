@@ -10,7 +10,7 @@
 استخدم هذا النموذج لجميع النوافذ في التطبيق لضمان التجانس
 -->
 
-<VBox styleClass="window-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox styleClass="window-container" stylesheets="@../css/new-theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       
       <!-- رأس النافذة -->

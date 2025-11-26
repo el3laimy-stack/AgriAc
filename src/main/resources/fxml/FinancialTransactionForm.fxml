@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefWidth="550.0" styleClass="card" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.FinancialTransactionFormController">
+<AnchorPane prefWidth="550.0" styleClass="card" stylesheets="@../css/new-theme.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.FinancialTransactionFormController">
     <children>
         <GridPane hgap="10.0" vgap="15.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
             <columnConstraints>

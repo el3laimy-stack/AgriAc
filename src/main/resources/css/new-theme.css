@@ -1,0 +1,306 @@
+/* =================================================================
+   New Modern Theme
+   ================================================================= */
+
+/* --- Root Variables --- */
+:root {
+    -fx-font-family: "Cairo", sans-serif;
+    -fx-primary-color: #3949AB; /* Indigo */
+    -fx-primary-light-color: #E8EAF6;
+    -fx-accent-color: #FF4081; /* Pink A200 */
+    -fx-dark-color: #263238; /* Blue Grey 900 */
+    -fx-text-primary-color: #212121;
+    -fx-text-secondary-color: #757575;
+    -fx-background-color: #F5F5F5; /* Grey 100 */
+    -fx-card-background-color: #FFFFFF;
+    -fx-border-color: #E0E0E0;
+    -fx-success-color: #4CAF50;
+    -fx-danger-color: #F44336;
+    -fx-warning-color: #FFC107;
+}
+
+/* --- Base Typography --- */
+.label, .button, .text-field, .combo-box, .table-view, .menu-item, .toggle-button, .titled-pane > .title .text {
+    -fx-font-family: -fx-font-family;
+    -fx-text-fill: -fx-text-primary-color;
+}
+
+/* --- Main Layout --- */
+.main-container {
+    -fx-background-color: -fx-background-color;
+}
+
+/* --- Side Navigation Bar --- */
+.side-navigation-bar {
+    -fx-background-color: -fx-dark-color;
+    -fx-padding: 20 0;
+    -fx-spacing: 8;
+}
+
+.side-navigation-bar .label {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 20 0;
+}
+
+.side-navigation-bar .button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #B0BEC5; /* Blue Grey 200 */
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_RIGHT;
+    -fx-pref-width: 220px;
+    -fx-padding: 12 25;
+    -fx-border-width: 0 0 0 5;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-graphic-text-gap: 15;
+}
+
+.side-navigation-bar .button .font-icon {
+    -fx-fill: #B0BEC5;
+    -fx-font-size: 1.6em;
+}
+
+.side-navigation-bar .button:hover {
+    -fx-text-fill: white;
+    -fx-background-color: #37474F; /* Blue Grey 800 */
+}
+
+.side-navigation-bar .button:hover .font-icon {
+    -fx-fill: white;
+}
+
+.side-navigation-bar .button.active {
+    -fx-text-fill: white;
+    -fx-border-color: -fx-accent-color;
+    -fx-background-color: -fx-primary-color;
+}
+
+.side-navigation-bar .button.active .font-icon {
+    -fx-fill: white;
+}
+
+/* --- Accordion in Sidebar --- */
+.side-navigation-bar .accordion {
+    -fx-background-color: transparent;
+}
+
+.side-navigation-bar .titled-pane {
+    -fx-background-color: transparent;
+}
+
+.side-navigation-bar .titled-pane > .title {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 12 25;
+}
+
+.side-navigation-bar .titled-pane > .title .text {
+    -fx-fill: #B0BEC5;
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
+}
+
+.side-navigation-bar .titled-pane > .title .arrow-button .arrow {
+    -fx-background-color: #B0BEC5;
+}
+
+.side-navigation-bar .titled-pane:hover > .title .text {
+    -fx-fill: white;
+}
+.side-navigation-bar .titled-pane:hover > .title .arrow-button .arrow {
+    -fx-background-color: white;
+}
+
+.side-navigation-bar .titled-pane > .content {
+    -fx-background-color: #1a2428; /* Slightly darker than sidebar */
+    -fx-padding: 5 25 5 5;
+}
+
+.side-navigation-bar .accordion-vbox {
+    -fx-spacing: 2;
+}
+
+.side-navigation-bar .accordion-vbox .button {
+     -fx-padding: 10 20;
+     -fx-font-size: 13px;
+     -fx-pref-width: 200px;
+}
+.side-navigation-bar .accordion-vbox .button .font-icon {
+    -fx-font-size: 1.4em;
+}
+
+
+/* --- Header Bar --- */
+.header-bar {
+    -fx-background-color: -fx-card-background-color;
+    -fx-padding: 0 25;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 5);
+}
+
+.header-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary-color;
+}
+
+/* --- Content Area --- */
+#contentArea {
+    -fx-padding: 20;
+}
+
+/* --- Cards --- */
+.card {
+    -fx-background-color: -fx-card-background-color;
+    -fx-background-radius: 8;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 15, 0, 0, 4);
+}
+
+.card-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-color;
+}
+
+/* --- Dashboard Specific --- */
+.kpi-card {
+    -fx-background-color: -fx-card-background-color;
+    -fx-padding: 20;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 15, 0, 0, 4);
+}
+
+.kpi-title {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-text-secondary-color;
+}
+
+.kpi-value {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary-color;
+}
+
+.kpi-icon-container {
+    -fx-padding: 15px;
+    -fx-background-radius: 50%;
+}
+
+.kpi-icon-container .font-icon {
+    -fx-font-size: 2em;
+    -fx-fill: white;
+}
+
+.success-bg { -fx-background-color: -fx-success-color; }
+.danger-bg { -fx-background-color: -fx-danger-color; }
+.warning-bg { -fx-background-color: -fx-warning-color; }
+.primary-bg { -fx-background-color: -fx-primary-color; }
+
+.recent-activity-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 15 5;
+}
+
+/* --- Filter Bar --- */
+.filter-bar {
+    -fx-background-color: -fx-card-background-color;
+    -fx-padding: 10px 15px;
+    -fx-border-color: -fx-border-color;
+    -fx-border-width: 1px;
+    -fx-background-radius: 8px;
+}
+
+/* --- Tables --- */
+.table-view {
+    -fx-border-color: -fx-border-color;
+    -fx-border-radius: 8;
+}
+
+.table-view .column-header-background { -fx-background-color: -fx-primary-light-color; }
+.table-view .column-header .label {
+    -fx-text-fill: -fx-primary-color;
+    -fx-font-weight: bold;
+}
+.table-view .table-row-cell:odd { -fx-background-color: #fafafa; }
+.table-view .table-row-cell:selected { -fx-background-color: -fx-primary-light-color; }
+
+/* --- Forms --- */
+.form-dialog-container {
+    -fx-background-color: -fx-background-color;
+}
+
+.form-dialog-header {
+    -fx-background-color: -fx-primary-color;
+    -fx-padding: 20px;
+}
+
+.form-dialog-header .title-lg {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+}
+
+.form-dialog-footer {
+    -fx-background-color: -fx-background-color;
+    -fx-padding: 15px;
+    -fx-border-width: 1 0 0 0;
+    -fx-border-color: -fx-border-color;
+}
+
+/* --- Status Cell Styles --- */
+.table-cell.status-paid { -fx-text-fill: -fx-success-color; -fx-font-weight: bold; }
+.table-cell.status-partial { -fx-text-fill: -fx-warning-color; -fx-font-weight: bold; }
+.table-cell.status-unpaid { -fx-text-fill: -fx-danger-color; -fx-font-weight: bold; }
+
+/* --- Wizard Stepper Styles --- */
+.stepper-container {
+    -fx-padding: 20px 40px;
+    -fx-background-color: -fx-card-background-color;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: -fx-border-color;
+}
+
+.stepper-step {
+    -fx-opacity: 0.6;
+}
+
+.stepper-step.active {
+    -fx-opacity: 1.0;
+}
+
+.stepper-step .stepper-step-number {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-color: -fx-border-color;
+    -fx-text-fill: -fx-text-secondary-color;
+    -fx-padding: 5px 12px;
+    -fx-background-radius: 50%;
+}
+
+.stepper-step.active .stepper-step-number {
+    -fx-background-color: -fx-accent-color;
+    -fx-text-fill: white;
+}
+
+.stepper-step.completed .stepper-step-number {
+    -fx-background-color: -fx-success-color;
+    -fx-text-fill: white;
+}
+
+.stepper-step .stepper-step-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: -fx-text-secondary-color;
+}
+
+.stepper-step.active .stepper-step-label {
+    -fx-text-fill: -fx-text-primary-color;
+    -fx-font-weight: bold;
+}
+
+.stepper-separator {
+    -fx-background-color: -fx-border-color;
+    -fx-min-height: 2px;
+    -fx-max-height: 2px;
+}

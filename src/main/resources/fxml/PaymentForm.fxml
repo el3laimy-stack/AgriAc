@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox styleClass="form-dialog-container" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.PaymentFormController">
+<VBox styleClass="form-dialog-container" stylesheets="@../css/new-theme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accounting.controller.PaymentFormController">
    <children>
       
       <!-- Header -->
